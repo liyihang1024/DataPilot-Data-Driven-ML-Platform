@@ -205,47 +205,56 @@ Content App */
 	background-color: rgb(189, 147, 249);
 	color: rgb(255, 255, 255);
 }
+/*设置QMdiArea颜色*/
+QMdiArea {
+    background-color: rgb(33, 37, 43); /* 设置为你想要的颜色 */
+}
+QMdiSubWindow {
+    background-color: rgb(33, 37, 43); /* 同样不透明的背景色，确保子窗口不透明 */
+}
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
 QTableWidget */
+/* QTableWidget */
 QTableWidget {	
-	background-color: transparent;
-	padding: 10px;
-	border-radius: 5px;
-	gridline-color: rgb(44, 49, 58);
-	border-bottom: 1px solid rgb(44, 49, 60);
+	background-color: rgb(33, 37, 43); /* 设定一个非透明的背景色 */
+	padding: 0; /* 移除内边距，内边距可能会导致背景色在边框内显示 */
+	margin: 0; /* 确保没有外边距 */
+	border-radius: 5px; /* 如果你希望整个表格有圆角可以保留 */
+	border: 1px solid rgb(44, 49, 60); /* 添加边框以匹配表头 */
 }
+
+/* QTableWidget items */
 QTableWidget::item{
-	border-color: rgb(44, 49, 60);
-	padding-left: 5px;
-	padding-right: 5px;
-	gridline-color: rgb(44, 49, 60);
+	background-color: rgb(33, 37, 43); /* 项的背景色应该和表格背景色一致 */
+	border: 0.2px solid rgb(44, 49, 60); /* 设置网格线宽度和颜色 */
 }
+
+/* Selected item */
 QTableWidget::item:selected{
-	background-color: rgb(189, 147, 249);
+	background-color: rgb(189, 147, 249); /* 被选中项的背景色 */
 }
+
+/* Header Section */
 QHeaderView::section{
 	background-color: rgb(33, 37, 43);
-	max-width: 30px;
-	border: 1px solid rgb(44, 49, 58);
-	border-style: none;
-    border-bottom: 1px solid rgb(44, 49, 60);
-    border-right: 1px solid rgb(44, 49, 60);
+	border: 1px solid rgb(44, 49, 60); /* 统一边框颜色 */
+	border-bottom: 1px solid rgb(44, 49, 60); /* 单独设置底边框颜色 */
+	border-right: 1px solid rgb(44, 49, 60); /* 单独设置右边框颜色 */
+	padding: 3px;
+	border-top-left-radius: 0px; /* 如果需要圆角 */
+	border-top-right-radius: 0px;
 }
+
+/* Horizontal Header */
 QTableWidget::horizontalHeader {	
 	background-color: rgb(33, 37, 43);
 }
-QHeaderView::section:horizontal
-{
-    border: 1px solid rgb(33, 37, 43);
+
+/* Vertical Header */
+QHeaderView::section:vertical {
 	background-color: rgb(33, 37, 43);
-	padding: 3px;
-	border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
-}
-QHeaderView::section:vertical
-{
-    border: 1px solid rgb(44, 49, 60);
+	border: 1px solid rgb(44, 49, 60);
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////

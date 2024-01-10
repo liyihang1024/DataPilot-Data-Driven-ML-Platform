@@ -42,3 +42,9 @@ from . ui_functions import *
 # APP FUNCTIONS
 # 导入应用程序功能模块，这里包含应用程序的核心功能和业务逻辑
 from . app_functions import *
+
+# 从自定特义征选择模块导入其他UI窗口
+from . Ui_widget_FeatureSelection import *
+
+# 从自定特义模型训练块导入其他UI窗口
+from . Ui_widget_ModelTrain import *

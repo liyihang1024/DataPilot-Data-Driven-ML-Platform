@@ -13,8 +13,17 @@
 from main import *  # 从main.py文件导入所有内容
 import numpy as np
 import pandas as pd
+from sklearn.linear_model import Ridge, Lasso
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.svm import SVR
+from xgboost import XGBRegressor
+from sklearn.feature_selection import RFE
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+import seaborn as sns
 from PySide6.QtCore import QThread, Signal  # 导入QThread和Signal类
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, MaxAbsScaler, RobustScaler
+from sklearn.feature_selection import VarianceThreshold, SelectKBest, chi2, f_classif, mutual_info_classif
 
 # 访问主窗口小部件
 # ///////////////////////////////////////////////////////////////
@@ -263,95 +272,288 @@ class DataProcessingThread(QThread):
 
 
 # ======================== 代码块#3：特征选择 ========================
+
 class FeatureSelectionThread(QThread):
-    # 定义一个信号，传递处理后的数据和对应的项目名称
-    data_processed = Signal(pd.DataFrame, str)
+    # 定义一个信号，传递处理后的数据和处理信息
+    data_processed = Signal(pd.DataFrame, dict)
 
     def __init__(self, data, selected_items):
         super().__init__()
         self.data = data
         self.selected_items = selected_items
-        # print("特征选择线程...")
-        # print(data.iloc[0:3, 0:5])
-        # print(selected_items)
 
     def run(self):
-        for item in self.selected_items:
-            processed_data = self.process_data(self.data, item)
-            self.data_processed.emit(processed_data, item)
+        # 初始化处理信息的字典
+        processing_info = {
+            'total_features': None,
+            'selected_each_step': {},
+            'final_selected_features': None
+        }
+        
+        # 设置初始数据集和特征数
+        current_data = self.data
+        processing_info['total_features'] = current_data.shape[1] - 1  # 减去目标列
 
-    def process_data(self, data, method):
-        # 在这里根据method处理数据
-        # 这里只是返回原始数据作为示例
-        return data
+        # 按照selected_items中的顺序依次处理数据
+        for method, param in self.selected_items.items():
+            current_data, selected_features = self.process_data(current_data, method, param)
+            processing_info['selected_each_step'][method] = selected_features
+
+        # 最终选中的特征
+        processing_info['final_selected_features'] = current_data.shape[1] - 1  # 减去目标列
+
+        # 发射信号
+        self.data_processed.emit(current_data, processing_info)
+
+    def process_data(self, data, feature_selection_method, param):
+        # 分离特征和目标
+        X = data.iloc[:, :-1]  # 所有行，除了最后一列的数据
+        y = data.iloc[:, -1]   # 所有行，只有最后一列的数据
+
+        # 根据特征选择方法处理数据
+        if feature_selection_method == "方差过滤":
+            selector = VarianceThreshold(threshold=float(param))
+            X_selected = selector.fit_transform(X)
+            selected_columns = X.columns[selector.get_support(indices=True)]
+        elif feature_selection_method == "卡方过滤":
+            selector = SelectKBest(chi2, k=int(param))
+            X_selected = selector.fit_transform(X, y)
+            selected_columns = X.columns[selector.get_support(indices=True)]
+        elif feature_selection_method == "F检验":
+            selector = SelectKBest(f_classif, k=int(param))
+            X_selected = selector.fit_transform(X, y)
+            selected_columns = X.columns[selector.get_support(indices=True)]
+        elif feature_selection_method == "互信息法":
+            selector = SelectKBest(mutual_info_classif, k=int(param))
+            X_selected = selector.fit_transform(X, y)
+            selected_columns = X.columns[selector.get_support(indices=True)]
+        else:
+            X_selected = X
+            selected_columns = X.columns
+
+        # 将选中的特征转换回DataFrame
+        data_selected = pd.DataFrame(X_selected, index=X.index, columns=selected_columns)
+        # 将目标列添加回来
+        data_selected = pd.concat([data_selected, y], axis=1)
+
+        return data_selected, selected_columns.tolist()
 
 # ======================== 代码块#3：结束 ========================
 
 
-# 参数设置窗口类
+# # 参数设置窗口类
+# class FeatureSelectionParamsDialog(QDialog):
+#     def __init__(self, feature_selection_method, parent=None):
+#         super().__init__(parent)
+#         # self.setWindowTitle(f"{feature_selection_methods.__name__} Parameters")
+#         # self.algorithm = algorithm_class()  # 实例化算法
+#         self.params = feature_selection_method  # 获取参数
+#         self.init_ui()  # 初始化界面
+
+#     # 初始化用户界面
+#     def init_ui(self):
+#         layout = QVBoxLayout()
+#         layout.setSpacing(10)  # 设置元素间的间距
+
+#         # 获取最长参数名称的长度
+#         max_param_length = max(len(param) for param in self.params)
+
+#         # 用于跟踪每个参数的LineEdit的字典
+#         self.param_line_edits = {}
+
+#         # 计算标签的统一宽度
+#         label_width = max_param_length * 10  # 修改点：设置了一个基于最长参数名称的固定宽度
+
+#         # 为每个参数创建一个水平布局的标签和LineEdit
+#         for param, value in self.params.items():
+#             param_layout = QHBoxLayout()
+#             param_label = QLabel(f"{param}:")
+#             param_label.setFixedWidth(label_width)  # 修改点：设置固定宽度
+#             param_label.setAlignment(Qt.AlignRight)  # 右对齐
+#             line_edit = QLineEdit(str(value))
+#             line_edit.setFixedWidth(100)  # 设置统一的LineEdit长度
+#             param_layout.addWidget(param_label)
+#             param_layout.addWidget(line_edit)
+#             self.param_line_edits[param] = line_edit
+#             layout.addLayout(param_layout)
+
+#         # 创建确定和取消按钮，并连接它们的点击信号到槽函数
+#         self.ok_button = QPushButton("确定", self)
+#         self.cancel_button = QPushButton("取消", self)
+#         self.ok_button.clicked.connect(self.accept)
+#         self.cancel_button.clicked.connect(self.reject)
+        
+#         # 添加按钮到界面底部，并设置合理的间距
+#         buttons_layout = QHBoxLayout()
+#         buttons_layout.addStretch()
+#         buttons_layout.addWidget(self.ok_button)
+#         buttons_layout.addWidget(self.cancel_button)
+#         buttons_layout.setSpacing(10)  # 设置按钮之间的间距
+#         layout.addLayout(buttons_layout)
+
+#         self.setLayout(layout)
+#         self.setStyleSheet("QWidget { font-size: 14px; } QPushButton { width: 80px; }")  # 设置字体大小和按钮宽度
+
+#     # 接受修改，关闭对话框并打印修改后的参数
+#     def accept(self):
+#         # modified_params = {param: line_edit.text() for param, line_edit in self.param_line_edits.items()}
+#         # print("修改后的参数：", modified_params)
+#         feature_selection_method = list(self.params.keys())[0]
+#         self.params[feature_selection_method] = self.param_line_edits[feature_selection_method].text()
+#         super().accept()
+
+#         # return modified_params
+
+#     # 拒绝修改，关闭对话框但不打印参数
+#     def reject(self):
+#         # 由于是取消操作，这里不需要打印任何参数
+#         super().reject()
+
 class FeatureSelectionParamsDialog(QDialog):
-    def __init__(self, feature_selection_method, parent=None):
-        super().__init__(parent)
-        # self.setWindowTitle(f"{feature_selection_methods.__name__} Parameters")
-        # self.algorithm = algorithm_class()  # 实例化算法
-        self.params = feature_selection_method  # 获取参数
-        self.init_ui()  # 初始化界面
+    def __init__(self, parent=None, title=""):
+        super(FeatureSelectionParamsDialog, self).__init__(parent)
+        self.setWindowTitle(title)
 
-    # 初始化用户界面
-    def init_ui(self):
-        layout = QVBoxLayout()
-        layout.setSpacing(10)  # 设置元素间的间距
+        # 主垂直布局
+        main_layout = QVBoxLayout(self)
 
-        # 获取最长参数名称的长度
-        max_param_length = max(len(param) for param in self.params)
+        # 添加标签和文本编辑框
+        self.label = QLabel(title)
+        self.text_edit = QLineEdit()
 
-        # 用于跟踪每个参数的LineEdit的字典
-        self.param_line_edits = {}
+        # 添加确定和取消按钮
+        self.ok_button = QPushButton('确定')
+        self.cancel_button = QPushButton('取消')
 
-        # 计算标签的统一宽度
-        label_width = max_param_length * 10  # 修改点：设置了一个基于最长参数名称的固定宽度
+        # 水平布局来容纳按钮
+        button_layout = QHBoxLayout()
+        button_layout.addWidget(self.ok_button)
+        button_layout.addWidget(self.cancel_button)
 
-        # 为每个参数创建一个水平布局的标签和LineEdit
-        for param, value in self.params.items():
-            param_layout = QHBoxLayout()
-            param_label = QLabel(f"{param}:")
-            param_label.setFixedWidth(label_width)  # 修改点：设置固定宽度
-            param_label.setAlignment(Qt.AlignRight)  # 右对齐
-            line_edit = QLineEdit(str(value))
-            line_edit.setFixedWidth(100)  # 设置统一的LineEdit长度
-            param_layout.addWidget(param_label)
-            param_layout.addWidget(line_edit)
-            self.param_line_edits[param] = line_edit
-            layout.addLayout(param_layout)
+        main_layout.addWidget(self.label)
+        main_layout.addWidget(self.text_edit)
+        main_layout.addLayout(button_layout)
 
-        # 创建确定和取消按钮，并连接它们的点击信号到槽函数
-        self.ok_button = QPushButton("确定", self)
-        self.cancel_button = QPushButton("取消", self)
+        # 连接按钮信号
         self.ok_button.clicked.connect(self.accept)
         self.cancel_button.clicked.connect(self.reject)
-        
-        # 添加按钮到界面底部，并设置合理的间距
-        buttons_layout = QHBoxLayout()
-        buttons_layout.addStretch()
-        buttons_layout.addWidget(self.ok_button)
-        buttons_layout.addWidget(self.cancel_button)
-        buttons_layout.setSpacing(10)  # 设置按钮之间的间距
-        layout.addLayout(buttons_layout)
+
+
+from modules.Ui_widget_FeatureSelection import Ui_MdiSubW_featureSelection  # 确保这里的路径正确
+from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QMdiArea, QMdiSubWindow
+
+class FeatureSelectionWindow(QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = Ui_MdiSubW_featureSelection()
+        self.ui.setupUi(self)
+
+class NonClosableMdiSubWindow(QMdiSubWindow):
+    def closeEvent(self, event):
+        # 重写closeEvent，阻止窗口关闭
+        event.ignore()
+
+
+class FeatureImportanceDialog(QDialog):
+    def __init__(self):
+        super(FeatureImportanceDialog, self).__init__()
+        self.selected_methods = []
+
+        # 创建复选框
+        self.checkboxes = {
+            "Ridge Regression": QCheckBox("Ridge Regression"),
+            "Lasso": QCheckBox("Lasso"),
+            "Random Forest": QCheckBox("Random Forest"),
+            "SVR": QCheckBox("SVR"),
+            "XGBoost": QCheckBox("XGBoost"),
+            "RFE": QCheckBox("RFE")
+        }
+
+        # 创建布局
+        layout = QVBoxLayout()
+        for checkbox in self.checkboxes.values():
+            layout.addWidget(checkbox)
+
+        # 创建确定和取消按钮
+        self.btn_ok = QPushButton("确定")
+        self.btn_cancel = QPushButton("取消")
+        layout.addWidget(self.btn_ok)
+        layout.addWidget(self.btn_cancel)
 
         self.setLayout(layout)
-        self.setStyleSheet("QWidget { font-size: 14px; } QPushButton { width: 80px; }")  # 设置字体大小和按钮宽度
 
-    # 接受修改，关闭对话框并打印修改后的参数
-    def accept(self):
-        # modified_params = {param: line_edit.text() for param, line_edit in self.param_line_edits.items()}
-        # print("修改后的参数：", modified_params)
-        feature_selection_method = list(self.params.keys())[0]
-        self.params[feature_selection_method] = self.param_line_edits[feature_selection_method].text()
-        super().accept()
+        # 连接信号
+        self.btn_ok.clicked.connect(self.accept)
+        self.btn_cancel.clicked.connect(self.reject)
 
-        # return modified_params
+    def get_selected_methods(self):
+        return [method for method, checkbox in self.checkboxes.items() if checkbox.isChecked()]
 
-    # 拒绝修改，关闭对话框但不打印参数
-    def reject(self):
-        # 由于是取消操作，这里不需要打印任何参数
-        super().reject()
+class FeatureImportanceThread(QThread):
+    result_ready = Signal(pd.DataFrame)
+
+    def __init__(self, data, selected_methods):
+        super().__init__()
+        self.data = data  # DataFrame, 最后一列是目标变量
+        self.selected_methods = selected_methods
+        data.to_excel('data1111.xlsx')
+
+    def run(self):
+        X = self.data.iloc[:, :-1]
+        y = self.data.iloc[:, -1]
+
+        importance_results = pd.DataFrame(index=X.columns)
+
+        if 'Ridge Regression' in self.selected_methods:
+            ridge = Ridge()
+            ridge.fit(X, y)
+            importance_results['Ridge'] = np.abs(ridge.coef_)
+
+        if 'Lasso' in self.selected_methods:
+            lasso = Lasso()
+            lasso.fit(X, y)
+            importance_results['Lasso'] = np.abs(lasso.coef_)
+
+        if 'Random Forest' in self.selected_methods:
+            rf = RandomForestRegressor()
+            rf.fit(X, y)
+            importance_results['Random Forest'] = rf.feature_importances_
+
+        if 'SVR' in self.selected_methods:
+            svr = SVR(kernel='linear')
+            svr.fit(X, y)
+            importance_results['SVR'] = np.abs(svr.coef_[0])
+
+        if 'XGBoost' in self.selected_methods:
+            xgb = XGBRegressor()
+            xgb.fit(X, y)
+            importance_results['XGBoost'] = xgb.feature_importances_
+
+        if 'RFE' in self.selected_methods:
+            estimator = RandomForestRegressor()
+            selector = RFE(estimator, n_features_to_select=1)
+            selector.fit(X, y)
+            importance_results['RFE'] = selector.ranking_
+
+        # 计算平均重要性
+        average_importance = importance_results.mean(axis=1)
+        importance_results['Average'] = average_importance
+
+        # 按照 'Average' 列降序排列 importance_results
+        importance_results = importance_results.sort_values(by='Average', ascending=False)
+
+        self.result_ready.emit(importance_results)
+
+
+# 导入外部模型训练UI文件
+from modules.Ui_widget_ModelTrain import Ui_MdiSubW_ModelTrain
+class ModelTrainWindow(QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.ui = Ui_MdiSubW_ModelTrain()
+        self.ui.setupUi(self)
+
+class NonClosableMdiSubWindow(QMdiSubWindow):
+    def closeEvent(self, event):
+        # 重写closeEvent，阻止窗口关闭
+        event.ignore()

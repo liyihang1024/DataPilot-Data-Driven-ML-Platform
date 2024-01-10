@@ -213,7 +213,7 @@ class UIFunctions(MainWindow):
         # 如果使用自定义主题
         if useCustomTheme:
             # 读取文件内容
-            str = open(file, 'r').read()
+            str = open(file, 'r', encoding='utf-8').read()
             # 应用样式表
             self.ui.styleSheet.setStyleSheet(str)
 

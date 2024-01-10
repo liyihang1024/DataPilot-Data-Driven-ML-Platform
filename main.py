@@ -14,10 +14,14 @@
 
 # 导入必要的库和模块
 import sys
+import qdarkstyle
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 from sklearn.impute import KNNImputer
+from sklearn.feature_selection import VarianceThreshold, SelectKBest, chi2, f_classif, mutual_info_classif
 from PySide6.QtGui import QAction, QIcon, QCursor
+from PySide6.QtCore import QEvent, Qt
 import os
 import time
 import psutil   # 用于获取系统信息，如CPU和内存使用情况
@@ -29,6 +33,8 @@ from datetime import datetime
 from modules import *
 from widgets import *
 from PySide6.QtCharts import QChart, QLineSeries, QValueAxis
+
+# from qt_material import apply_stylesheet
 
 # 打印当前时间
 print("当前时间:", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
@@ -63,6 +69,8 @@ class MainWindow(QMainWindow):
         description = "DataPilot - Data Driven ML Platform"
         self.setWindowTitle(title)  # 设置窗口标题
         widgets.titleRightInfo.setText(description)  # 设置界面右上角信息
+        # 设置窗口图标
+        self.setWindowIcon(QIcon("images/DataPilot_icon.png"))
 
         # 切换菜单
         # ///////////////////////////////////////////////////////////////
@@ -102,11 +110,6 @@ class MainWindow(QMainWindow):
         # 新增视频教程功能
         widgets.btn_videoTutorial.clicked.connect(self.play_tutorial)
 
-        # 添加特征选择按钮点击事件
-        widgets.btn_eatureSelection.clicked.connect(self.feature_selection)
-        # 用于存储特征选择TreeWidget所有被选中的项目
-        self.selected_items = []
-
         # 打开/关闭左侧额外盒子
         def openCloseLeftBox():
             UIFunctions.toggleLeftBox(self, True)
@@ -143,59 +146,21 @@ class MainWindow(QMainWindow):
             # # 设置样式修复
             AppFunctions.setThemeHack(self)
 
+        # 解决Pyqt5 无边框窗口点击window菜单栏弹出与最小化
+        self.setWindowFlags(Qt.FramelessWindowHint|Qt.WindowSystemMenuHint|Qt.WindowMinimizeButtonHint|Qt.WindowMaximizeButtonHint)  # 隐藏边框
+
         # 设置初始页面和选中的菜单
         # ///////////////////////////////////////////////////////////////
         widgets.stackedWidget.setCurrentWidget(widgets.page1_Home)  # 设置初始显示的页面
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))  # 设置选中的菜单样式
 
-        # 连接信号和槽
-        widgets.treeWidget_featureSelection.itemChanged.connect(self.on_item_changed)
-        self.current_item = None  # 当前选中的树形项目
-        self.selected_methods = {}  # 用于保存选中项目和参数的字典
+        # 在特征选择MDI页面创建并显示特征选择子窗口
+        self.show_feature_selection_window()
+        self.open_subwindows = {}  # 用来跟踪打开的子窗口
 
+        # 在模型训练MDI页面创建并显示模型训练子窗口
+        self.show_model_train_window()
 
-    # 处理项目变化的槽函数
-    def on_item_changed(self, item, _):
-        feature_selection_methods = {
-            "方差过滤": 0,  # 方差过滤，默认值0
-            "卡方过滤": 0,      # 卡方过滤，默认值0
-            "F检验": 0,              # F检验，默认值0
-            "互信息法": 0,         # 互信息法，默认值0
-            "Embedded嵌入法": 0,           # Embedded嵌入法，默认值0
-            "Wrapper包装法": 0             # Wrapper包装法，默认值0
-        }
-
-        # 检查状态是否为选中并且项目不是根项目
-        if item.checkState(0) == Qt.Checked:
-            feature_selection_method = item.text(0)
-            if feature_selection_method in feature_selection_methods:
-                # 如果当前已有打开的对话框，先关闭它
-                if self.current_item is not None:
-                    self.current_item.setCheckState(0, Qt.Unchecked)
-                # 打开新的参数设置对话框
-                # 从字典中获取默认值
-                default_value = feature_selection_methods[feature_selection_method]
-                dialog = FeatureSelectionParamsDialog({feature_selection_method:default_value}, self)
-                self.current_item = item  # 保存当前选中的项目
-                accepted = dialog.exec()  # 以模态方式执行对话框
-                # if not accepted:
-                #     # 如果用户取消，则清除复选框
-                #     self.current_item.setCheckState(0, Qt.Unchecked)
-                # self.current_item = None  # 清除当前选中的项目
-
-                if accepted:
-                    # 用户点击了确定，更新字典，并保存选中项目和参数
-                    new_value = dialog.params[feature_selection_method]
-                    # self.feature_selection_methods[feature_selection_method] = new_value
-                    self.selected_methods[feature_selection_method] = new_value
-                    print(f"{feature_selection_method}: {new_value}")
-                    print(self.selected_methods)
-                else:
-                    # 如果用户取消，则清除复选框
-                    item.setCheckState(0, Qt.Unchecked)
-                    # 如果之前已经选择过，现在取消选择，则需要从字典中移除
-                    if feature_selection_method in self.selected_methods:
-                        del self.selected_methods[feature_selection_method]
 
     # 按钮点击事件处理
     # ///////////////////////////////////////////////////////////////
@@ -419,6 +384,8 @@ class MainWindow(QMainWindow):
         table_widget = getattr(widgets, operation_name)
 
         if processed:
+            # 如果数据已处理，使用处理后的数据作为新的输入数据
+            self.data = processed_data
             # 数据被处理，显示数据
             self.show_data(processed_data, table_widget)
         else:
@@ -434,22 +401,73 @@ class MainWindow(QMainWindow):
 # ======================== 代码块#2结束 ========================
 
 
+# ============ 代码块##：点击特征选择树弹出参数设置对话框设置并读取参数 ============
+    def on_item_clicked(self, item, column):
+        # 只处理第一列的点击事件
+        if column == 0:
+            method = item.text(0)
+            note = item.text(1)
+            key = f"{method}-{note}"
+            # 检查项目的勾选状态
+            if item.checkState(column) == Qt.Checked:
+                # 如果项目被勾选，弹出对话框
+                dialog = FeatureSelectionParamsDialog(self, title=note)
+                if dialog.exec():
+                    # 如果点击确定，保存参数
+                    self.selected_items[method] = dialog.text_edit.text()
+                else:
+                    # 如果点击取消，取消勾选
+                    item.setCheckState(column, Qt.Unchecked)
+            else:
+                # 如果取消勾选，从字典中删除对应的键值对
+                if method in self.selected_items:
+                    del self.selected_items[method]
+            
+            print('刚点击的参数：', method)
+            print('所有选中的参数：\n', self.selected_items)
+# ======================== 代码块#2结束 ========================
+            
 
+# ============ 代码块##：根据选择的特征处理方法显示处理后的数据 ============
+    def show_feature_selection_window(self):
+            feature_selection_window = FeatureSelectionWindow()
+            sub_window_FeatureSelectParam = NonClosableMdiSubWindow()  # 使用自定义的NonClosableMdiSubWindow
+            sub_window_FeatureSelectParam.setWidget(feature_selection_window)
+            sub_window_FeatureSelectParam.setWindowTitle("特征选择")
 
+            widgets.mdiArea_FeatureSelection.addSubWindow(sub_window_FeatureSelectParam)
+            # 创建一个QBrush，用一个纯色填充
+            brush = QBrush(QColor(33, 37, 43))
+            # 设置QMdiArea的背景画刷
+            widgets.mdiArea_FeatureSelection.setBackground(brush)
+            sub_window_FeatureSelectParam.show()
 
-# ============ 代码块##：在表格中显示数据 ============
+            # 将特征选择树与复选框勾选方法关联
+            feature_selection_window.ui.treeWidget_featureSelection.itemClicked.connect(self.on_item_clicked)
+            # 用于存储特征选择TreeWidget所有被选中的项目
+            self.selected_items = {}
+
+            # 将特征选择按钮与特征选择函数关联
+            feature_selection_window.ui.btn_featureSelection.clicked.connect(self.feature_selection)
+            
+            # 将特征相关性分析按钮与热图函数关联
+            feature_selection_window.ui.btn_correlationAnalysis.clicked.connect(self.show_correlation_heatmap)
+            
+            feature_selection_window.ui.btn_importanceRanking.clicked.connect(self.show_feature_importance_dialog)
+
+    def show_correlation_heatmap(self):
+        if hasattr(self, 'processed_data'):
+            self.create_correlation_heatmap_subwindow(self.processed_data, "Correlation Heatmap")
+        else:
+            print("没有可用的数据来显示热图。请先进行特征选择。")
+
     def feature_selection(self):
-        widgets.tabWidget_FeatureSelectionData.clear()
-        self.selected_items.clear()  # 清空之前的选中项目
-        selected_method = self.add_tabs_recursive(widgets.treeWidget_featureSelection.invisibleRootItem())
-        # print(selected_method)
-
         # 创建并启动特征选择线程
-        self.FeatureSelection_thread = FeatureSelectionThread(self.data, selected_method)
+        self.FeatureSelection_thread = FeatureSelectionThread(self.data, self.selected_items)
         self.FeatureSelection_thread.data_processed.connect(self.on_feature_selection_finished)
         self.FeatureSelection_thread.start()
     
-    def on_feature_selection_finished(self, data, selected_method):
+    def on_feature_selection_finished(self, data, processing_info):
         """
         特征选择完成后的处理函数：
         当特征选择完成后，此函数将被调用。它负责接收特征选择的结果，并更新界面显示及进行后续检查。
@@ -465,69 +483,289 @@ class MainWindow(QMainWindow):
 
         Returns:
         None
-        """
-        # print("data的大小为：", len(data))
-        # print(data)
-        # print("selected_method为：", selected_method)
-        # for index, df in enumerate(data):
-        #     print("Feature selection...\n", index, "→", df)
-        self.create_tab(data, selected_method)
+        """      
+        self.processed_data = data  # 保存处理后的数据以供热图使用
+        # 显示处理后的数据
+        self.create_mdi_subwindow_with_table(data, "Processed Data")
 
-    def add_tabs_recursive(self, tree_item):
-        for i in range(tree_item.childCount()):
-            child = tree_item.child(i)
-            if child.checkState(0) == Qt.Checked:
-                self.selected_items.append(child.text(0))  # 添加到选中项目列表中
-                # self.create_tab(child)  # 使用封装的函数创建标签页
-            self.add_tabs_recursive(child)  # 递归检查所有子项目
-        
-        return self.selected_items
+        # 绘制并显示皮尔森相关系数热图
+        # self.create_correlation_heatmap_subwindow(data, "Correlation Heatmap")
 
-    def create_tab(self, data, tree_item):
+        # 显示处理信息
+        info_text = self.format_processing_info(processing_info)
+        self.create_mdi_subwindow_with_text(info_text, "Processing Info")
+
+    def format_processing_info(self, processing_info):
+        info_lines = [
+            f"Total features: {processing_info['total_features']}",
+            "Selected features each step:"
+        ]
+        for method, features in processing_info['selected_each_step'].items():
+            info_lines.append(f"{method}: {features}")
+        info_lines.append(f"Final selected features: {processing_info['final_selected_features']}")
+        return "\n".join(info_lines)
+
+    def subwindow_closed(self, title):
+        """当子窗口关闭时调用，从跟踪字典中移除对应的记录"""
+        if title in self.open_subwindows:
+            del self.open_subwindows[title]
+
+    def create_mdi_subwindow_with_table(self, data, title):
         """
         根据提供的树项目和数据创建新的标签页和表格。
 
         参数:
-        tree_item - QTreeWidgetItem，树视图中的一个项目，代表用户的选择。
         data - pd.DataFrame，包含要在表格中显示的数据。
-
-        功能描述:
-        1. 创建一个新的QWidget作为标签页，并以tree_item的文本命名。
-        2. 根据数据的行数和列数创建QTableWidget。
-        3. 设置QTableWidget的列头为数据的列名。
-        4. 将数据填充到QTableWidget中。
-        5. 将QTableWidget添加到标签页的布局中。
+        title - 字符串，子窗口的标题。
         """
-        # 创建一个新的标签页
-        tab = QWidget()
-        widgets.tabWidget_FeatureSelectionData.addTab(tab, tree_item)
+        # 检查子窗口是否已经存在
+        if title in self.open_subwindows:
+            # 如果已存在，将其带到前台
+            self.open_subwindows[title].setFocus()
+        else:
+            # 创建一个新的QWidget作为MDI子窗口的内容
+            widget = QWidget()
+            row_count = data.shape[0]
+            column_count = data.shape[1]
+            table = QTableWidget(row_count, column_count)
+            table.setHorizontalHeaderLabels(data.columns)
+            
+            # 将数据填充到表格中
+            for row in range(row_count):
+                for column in range(column_count):
+                    item_text = str(data.iloc[row, column])
+                    item = QTableWidgetItem(item_text)
+                    table.setItem(row, column, item)
 
-        # 创建表格并设置行列数为数据的行列数
-        row_count = data.shape[0]
-        column_count = data.shape[1]
-        table = QTableWidget(row_count, column_count)
-        
-        # 设置表格的列头为数据的列名
-        table.setHorizontalHeaderLabels(data.columns)
+            # 创建布局并添加表格
+            layout = QHBoxLayout()
+            layout.addWidget(table)
+            widget.setLayout(layout)
 
-        # 将数据填充到表格中
-        for row in range(row_count):
-            for column in range(column_count):
-                # 获取数据中的元素，转换为字符串类型
-                item_text = str(data.iloc[row, column])
-                item = QTableWidgetItem(item_text)
-                table.setItem(row, column, item)
+            # 创建MDI子窗口并设置内容
+            sub_window = QMdiSubWindow()
+            sub_window.setWidget(widget)
+            sub_window.setWindowTitle(title)
 
-        # 创建一个水平布局并添加表格
-        layout = QHBoxLayout()
-        layout.addWidget(table)
-        tab.setLayout(layout)  # 设置标签页使用该布局
+            sub_window.setAttribute(Qt.WA_DeleteOnClose)  # 确保窗口关闭时释放资源
+            sub_window.destroyed.connect(lambda: self.subwindow_closed(title))  # 连接关闭信号
 
+            # 将子窗口添加到MDI区域并显示
+            widgets.mdiArea_FeatureSelection.addSubWindow(sub_window)
+            sub_window.show()
+
+            # 将子窗口添加到跟踪字典
+            self.open_subwindows[title] = sub_window
+
+    def create_correlation_heatmap_subwindow(self, data, title="Correlation Heatmap"):
+        if title in self.open_subwindows:
+            self.open_subwindows[title].setFocus()
+        else:
+            # 创建画布和图形
+            fig = Figure(figsize=(10, 8))
+            canvas = FigureCanvas(fig)
+            ax = fig.add_subplot(111)
+
+            # 计算皮尔森相关系数并绘制热图
+            correlation_matrix = data.iloc[:-1, :-1].corr(method='pearson')
+            heatmap = sns.heatmap(correlation_matrix, ax=ax, cmap='jet', linewidths=0.5, square=True, annot=False)
+
+            # 设置坐标轴标签
+            ax.set_xlabel('Features')
+            ax.set_ylabel('Features')
+
+            # 设置colorbar的标题
+            cbar = ax.collections[0].colorbar
+            cbar.set_label('Pearson Correlation Coefficient')
+
+            # 创建QWidget作为MDI子窗口的内容
+            widget = QWidget()
+            layout = QVBoxLayout()
+            layout.addWidget(canvas)  # 将画布添加到布局中
+            widget.setLayout(layout)
+
+            # 创建MDI子窗口并设置内容
+            sub_window = QMdiSubWindow()
+            sub_window.setWidget(widget)
+            sub_window.setWindowTitle(title)
+            sub_window.setAttribute(Qt.WA_DeleteOnClose)
+            sub_window.destroyed.connect(lambda: self.subwindow_closed(title))
+
+            widgets.mdiArea_FeatureSelection.addSubWindow(sub_window)
+            sub_window.show()
+
+            self.open_subwindows[title] = sub_window
+
+    def create_mdi_subwindow_with_text(self, text, title):
+         # 检查子窗口是否已经存在
+        if title in self.open_subwindows:
+            # 如果已存在，将其带到前台
+            self.open_subwindows[title].setFocus()
+        else:
+            # 创建一个新的QWidget作为MDI子窗口的内容
+            widget = QWidget()
+            text_edit = QTextEdit()
+            text_edit.setText(text)
+            text_edit.setReadOnly(True)  # 设置为只读
+
+            # 设置文本编辑器的样式
+            text_edit.setStyleSheet("""
+                QTextEdit {
+                    background-color: rgb(33, 37, 43);
+                    color: balck;  /* 字体颜色 */
+                }
+            """)
+
+            # 创建布局并添加文本编辑器
+            layout = QVBoxLayout()
+            layout.addWidget(text_edit)
+            widget.setLayout(layout)
+
+            # 创建MDI子窗口并设置内容
+            sub_window = QMdiSubWindow()
+            sub_window.setWidget(widget)
+            sub_window.setWindowTitle(title)
+            
+            sub_window.setAttribute(Qt.WA_DeleteOnClose)  # 确保窗口关闭时释放资源
+            sub_window.destroyed.connect(lambda: self.subwindow_closed(title))  # 连接关闭信号
+
+            widgets.mdiArea_FeatureSelection.addSubWindow(sub_window)
+            sub_window.show()
+
+            # 将子窗口添加到跟踪字典
+            self.open_subwindows[title] = sub_window
 # ======================== 代码块##结束 ========================
 
 
+# ============ 代码块##：根据选择的特征排序方法进行特征重要性排序 ============
+    def show_feature_importance_dialog(self):
+        dialog = FeatureImportanceDialog()
+        if dialog.exec():
+            selected_methods = dialog.get_selected_methods()
+            if selected_methods:
+                self.start_feature_importance_thread(selected_methods)
+
+    def start_feature_importance_thread(self, methods):
+        # 创建并启动特征重要性线程
+        self.feature_importance_thread = FeatureImportanceThread(self.processed_data, methods)
+        self.feature_importance_thread.result_ready.connect(self.on_feature_importance_ready)
+        self.feature_importance_thread.start()
+
+    def on_feature_importance_ready(self, importance_results):
+        # 展示所有方法和平均特征重要性的表格
+        self.create_mdi_subwindow_with_table(importance_results, "Feature Importance")
+
+        # 展示平均特征重要性的柱状图
+        self.create_mdi_subwindow_with_plot(importance_results, "Average Feature Importance")
+
+    def create_mdi_subwindow_with_table(self, data, title):
+        # ... 创建表格的代码 ...
+        # 检查子窗口是否已经存在
+        if title in self.open_subwindows:
+            # 如果已存在，将其带到前台
+            self.open_subwindows[title].setFocus()
+        else:
+            # 创建一个新的QWidget作为MDI子窗口的内容
+            widget = QWidget()
+            row_count = data.shape[0]
+            column_count = data.shape[1]
+            table = QTableWidget(row_count, column_count)
+            table.setHorizontalHeaderLabels(data.columns)
+            
+            # 将数据填充到表格中
+            for row in range(row_count):
+                for column in range(column_count):
+                    item_text = str(data.iloc[row, column])
+                    item = QTableWidgetItem(item_text)
+                    table.setItem(row, column, item)
+
+            # 创建布局并添加表格
+            layout = QHBoxLayout()
+            layout.addWidget(table)
+            widget.setLayout(layout)
+
+            # 创建MDI子窗口并设置内容
+            sub_window = QMdiSubWindow()
+            sub_window.setWidget(widget)
+            sub_window.setWindowTitle(title)
+
+            sub_window.setAttribute(Qt.WA_DeleteOnClose)  # 确保窗口关闭时释放资源
+            sub_window.destroyed.connect(lambda: self.subwindow_closed(title))  # 连接关闭信号
+
+            # 将子窗口添加到MDI区域并显示
+            widgets.mdiArea_FeatureSelection.addSubWindow(sub_window)
+            sub_window.show()
+
+            # 将子窗口添加到跟踪字典
+            self.open_subwindows[title] = sub_window
+        
+
+    def create_mdi_subwindow_with_plot(self, data, title):
+        # 创建画布和图形
+        fig = Figure()
+        canvas = FigureCanvas(fig)
+        ax = fig.add_subplot(111)
+
+        # 绘制柱状图
+        data.iloc[:, -1].plot(kind='barh', ax=ax)
+
+        # 设置坐标轴标签
+        ax.set_ylabel('Features')  # 现在y轴表示特征重要性
+        ax.set_xlabel('Average feature importance')  # x轴表示特征
+
+        # 反转y轴的顺序
+        ax.invert_yaxis()
+
+        # 创建QWidget作为MDI子窗口的内容
+        widget = QWidget()
+        layout = QVBoxLayout()
+        layout.addWidget(canvas)
+        widget.setLayout(layout)
+
+        # 创建MDI子窗口并设置内容
+        sub_window = QMdiSubWindow()
+        sub_window.setWidget(widget)
+        sub_window.setWindowTitle(title)
+        widgets.mdiArea_FeatureSelection.addSubWindow(sub_window)
+        sub_window.show()
+
+# ============ 代码块##：结束 ============
 
 
+# ============ 代码块##：模型训练 ============
+    def show_model_train_window(self):
+        # 创建模型训练窗口实例
+        model_train_window = ModelTrainWindow()
+
+        # 使用自定义的NonClosableMdiSubWindow
+        sub_window_ModelTrain = NonClosableMdiSubWindow()
+        sub_window_ModelTrain.setWidget(model_train_window)
+        sub_window_ModelTrain.setWindowTitle("模型训练")
+
+        # 这段代码会使treeWidget第一列的宽度自动调整以适应其内容，而第二列则会填充剩余的空间
+        header = model_train_window.ui.treeWidget_AlgorithmSelection.header()
+        header.setSectionResizeMode(0, QHeaderView.ResizeToContents)  # 第一列
+        header.setSectionResizeMode(1, QHeaderView.Stretch)           # 第二列
+        
+        # 设置子窗口的最大宽度为450
+        sub_window_ModelTrain.setMaximumWidth(450)
+
+        # 如果需要，设置一个合理的最小宽度
+        sub_window_ModelTrain.setMinimumWidth(390)  # 这里的200可以根据需要调整
+        sub_window_ModelTrain.setMinimumHeight(560)  # 这里的200可以根据需要调整
+
+        # 将子窗口添加到MDI区域
+        widgets.mdiArea_ModelTraining.addSubWindow(sub_window_ModelTrain)
+
+        # 创建一个QBrush，用一个纯色填充
+        brush = QBrush(QColor(33, 37, 43))
+
+        # 设置QMdiArea的背景画刷
+        widgets.mdiArea_ModelTraining.setBackground(brush)
+        sub_window_ModelTrain.show()
+
+# ============ 代码块##：结束 ============
+                
 
 # ============ 代码块#3：在表格中显示数据 ============
     def show_data(self, data, table_widget):
@@ -760,6 +998,8 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon("圆角-DataPilot_bg.png"))
+    app.setWindowIcon(QIcon("images/DataPilot_icon.png"))
     window = MainWindow()
+    # window.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside6'))
+    window.show()
     sys.exit(app.exec())

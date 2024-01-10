@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainyFGgxC.ui'
+## Form generated from reading UI file 'mainhYnLeL.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.4.2
 ##
@@ -15,13 +15,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QDoubleSpinBox,
-    QFormLayout, QFrame, QGridLayout, QGroupBox,
+from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QMainWindow, QPlainTextEdit, QProgressBar, QPushButton,
-    QRadioButton, QSizePolicy, QSpinBox, QStackedWidget,
-    QTabWidget, QTableWidget, QTableWidgetItem, QTextEdit,
-    QTreeWidget, QTreeWidgetItem, QVBoxLayout, QWidget)
+    QMainWindow, QMdiArea, QProgressBar, QPushButton,
+    QSizePolicy, QStackedWidget, QTabWidget, QTableWidget,
+    QTableWidgetItem, QTextEdit, QVBoxLayout, QWidget)
 import resources_rc
 
 class Ui_MainWindow(object):
@@ -601,6 +599,7 @@ class Ui_MainWindow(object):
         font1.setPointSize(12)
         font1.setBold(False)
         font1.setItalic(False)
+        font1.setKerning(True)
         self.titleLeftApp.setFont(font1)
         self.titleLeftApp.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.titleLeftDescription = QLabel(self.topLogoInfo)
@@ -1176,7 +1175,7 @@ class Ui_MainWindow(object):
         self.btn_open_local_file.setMinimumSize(QSize(150, 30))
         self.btn_open_local_file.setFont(font)
         self.btn_open_local_file.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_open_local_file.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        self.btn_open_local_file.setStyleSheet(u"")
         icon5 = QIcon()
         icon5.addFile(u":/icons/images/icons/cil-folder-open.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_open_local_file.setIcon(icon5)
@@ -1188,7 +1187,7 @@ class Ui_MainWindow(object):
         self.btn_FeatureProcessing_2.setMinimumSize(QSize(150, 30))
         self.btn_FeatureProcessing_2.setFont(font)
         self.btn_FeatureProcessing_2.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_FeatureProcessing_2.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        self.btn_FeatureProcessing_2.setStyleSheet(u"")
         icon6 = QIcon()
         icon6.addFile(u":/icons/images/icons/cil-data-process.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_FeatureProcessing_2.setIcon(icon6)
@@ -1294,6 +1293,12 @@ class Ui_MainWindow(object):
 
         self.frame_2 = QFrame(self.row_1)
         self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setStyleSheet(u"QFrame {\n"
+"    border: none; /* \u79fb\u9664\u8fb9\u6846 */\n"
+"    padding: 0px; /* \u79fb\u9664\u5185\u8fb9\u8ddd */\n"
+"    background-color: rgb(33, 37, 43); /* \u8bbe\u7f6e\u80cc\u666f\u8272 */\n"
+"}\n"
+"")
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.verticalLayout_16 = QVBoxLayout(self.frame_2)
@@ -1319,8 +1324,7 @@ class Ui_MainWindow(object):
 "\n"
 "QTabBar::tab:selected {\n"
 "    border-bottom-color: white; /* same as pane color */\n"
-"}\n"
-"")
+"}")
         self.tab_1 = QWidget()
         self.tab_1.setObjectName(u"tab_1")
         self.verticalLayout_25 = QVBoxLayout(self.tab_1)
@@ -1376,7 +1380,20 @@ class Ui_MainWindow(object):
 
         self.progressBar = QProgressBar(self.frame_2)
         self.progressBar.setObjectName(u"progressBar")
+        self.progressBar.setStyleSheet(u"QProgressBar {\n"
+"    border: 1px solid #76797C;\n"
+"    border-radius: 2px;\n"
+"    height: 10px;  /* \u8c03\u6574\u8fd9\u4e2a\u503c\u6765\u6539\u53d8\u8fdb\u5ea6\u6761\u7684\u9ad8\u5ea6 */\n"
+"	color: white;  /* \u8bbe\u7f6e\u8fdb\u5ea6\u6761\u7684\u6587\u672c\u989c\u8272 */\n"
+"}\n"
+"\n"
+"QProgressBar::chunk {\n"
+"    background-color: #ffaa7f;\n"
+"}\n"
+"")
+        self.progressBar.setMaximum(100)
         self.progressBar.setValue(0)
+        self.progressBar.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_16.addWidget(self.progressBar)
 
@@ -1394,520 +1411,41 @@ class Ui_MainWindow(object):
         self.row_4 = QFrame(self.page3_FeatureSelection)
         self.row_4.setObjectName(u"row_4")
         self.row_4.setMinimumSize(QSize(0, 150))
+        self.row_4.setStyleSheet(u"")
         self.row_4.setFrameShape(QFrame.StyledPanel)
         self.row_4.setFrameShadow(QFrame.Raised)
-        self.checkBox = QCheckBox(self.row_4)
-        self.checkBox.setObjectName(u"checkBox")
-        self.checkBox.setGeometry(QRect(50, 10, 181, 31))
-        self.checkBox_3 = QCheckBox(self.row_4)
-        self.checkBox_3.setObjectName(u"checkBox_3")
-        self.checkBox_3.setGeometry(QRect(270, 10, 211, 31))
-        self.checkBox_4 = QCheckBox(self.row_4)
-        self.checkBox_4.setObjectName(u"checkBox_4")
-        self.checkBox_4.setGeometry(QRect(530, 10, 211, 31))
-        self.treeWidget_featureSelection = QTreeWidget(self.row_4)
-        __qtreewidgetitem = QTreeWidgetItem(self.treeWidget_featureSelection)
-        __qtreewidgetitem1 = QTreeWidgetItem(__qtreewidgetitem)
-        __qtreewidgetitem1.setCheckState(0, Qt.Unchecked);
-        __qtreewidgetitem2 = QTreeWidgetItem(__qtreewidgetitem)
-        __qtreewidgetitem3 = QTreeWidgetItem(__qtreewidgetitem2)
-        __qtreewidgetitem3.setCheckState(0, Qt.Unchecked);
-        __qtreewidgetitem4 = QTreeWidgetItem(__qtreewidgetitem2)
-        __qtreewidgetitem4.setCheckState(0, Qt.Unchecked);
-        __qtreewidgetitem5 = QTreeWidgetItem(__qtreewidgetitem2)
-        __qtreewidgetitem5.setCheckState(0, Qt.Unchecked);
-        __qtreewidgetitem6 = QTreeWidgetItem(self.treeWidget_featureSelection)
-        __qtreewidgetitem6.setCheckState(0, Qt.Unchecked);
-        __qtreewidgetitem7 = QTreeWidgetItem(self.treeWidget_featureSelection)
-        __qtreewidgetitem7.setCheckState(0, Qt.Unchecked);
-        self.treeWidget_featureSelection.setObjectName(u"treeWidget_featureSelection")
-        self.treeWidget_featureSelection.setGeometry(QRect(40, 60, 256, 192))
-        self.btn_eatureSelection = QPushButton(self.row_4)
-        self.btn_eatureSelection.setObjectName(u"btn_eatureSelection")
-        self.btn_eatureSelection.setGeometry(QRect(580, 460, 75, 24))
-        self.tabWidget_FeatureSelectionData = QTabWidget(self.row_4)
-        self.tabWidget_FeatureSelectionData.setObjectName(u"tabWidget_FeatureSelectionData")
-        self.tabWidget_FeatureSelectionData.setGeometry(QRect(360, 60, 541, 351))
-        self.tab = QWidget()
-        self.tab.setObjectName(u"tab")
-        self.tabWidget_FeatureSelectionData.addTab(self.tab, "")
-        self.tab_6 = QWidget()
-        self.tab_6.setObjectName(u"tab_6")
-        self.tabWidget_FeatureSelectionData.addTab(self.tab_6, "")
+        self.verticalLayout_30 = QVBoxLayout(self.row_4)
+        self.verticalLayout_30.setObjectName(u"verticalLayout_30")
+        self.mdiArea_FeatureSelection = QMdiArea(self.row_4)
+        self.mdiArea_FeatureSelection.setObjectName(u"mdiArea_FeatureSelection")
+        self.mdiArea_FeatureSelection.setStyleSheet(u"")
+
+        self.verticalLayout_30.addWidget(self.mdiArea_FeatureSelection)
+
 
         self.verticalLayout_20.addWidget(self.row_4)
 
         self.stackedWidget.addWidget(self.page3_FeatureSelection)
         self.page4_ModelTraining = QWidget()
         self.page4_ModelTraining.setObjectName(u"page4_ModelTraining")
-        self.treeWidget = QTreeWidget(self.page4_ModelTraining)
-        __qtreewidgetitem8 = QTreeWidgetItem(self.treeWidget)
-        QTreeWidgetItem(__qtreewidgetitem8)
-        QTreeWidgetItem(__qtreewidgetitem8)
-        QTreeWidgetItem(__qtreewidgetitem8)
-        QTreeWidgetItem(__qtreewidgetitem8)
-        QTreeWidgetItem(__qtreewidgetitem8)
-        QTreeWidgetItem(__qtreewidgetitem8)
-        QTreeWidgetItem(__qtreewidgetitem8)
-        QTreeWidgetItem(__qtreewidgetitem8)
-        QTreeWidgetItem(__qtreewidgetitem8)
-        QTreeWidgetItem(__qtreewidgetitem8)
-        __qtreewidgetitem9 = QTreeWidgetItem(self.treeWidget)
-        QTreeWidgetItem(__qtreewidgetitem9)
-        QTreeWidgetItem(__qtreewidgetitem9)
-        QTreeWidgetItem(__qtreewidgetitem9)
-        QTreeWidgetItem(__qtreewidgetitem9)
-        QTreeWidgetItem(__qtreewidgetitem9)
-        QTreeWidgetItem(__qtreewidgetitem9)
-        QTreeWidgetItem(__qtreewidgetitem9)
-        QTreeWidgetItem(__qtreewidgetitem9)
-        QTreeWidgetItem(__qtreewidgetitem9)
-        QTreeWidgetItem(__qtreewidgetitem9)
-        QTreeWidgetItem(__qtreewidgetitem9)
-        QTreeWidgetItem(__qtreewidgetitem9)
-        __qtreewidgetitem10 = QTreeWidgetItem(self.treeWidget)
-        QTreeWidgetItem(__qtreewidgetitem10)
-        QTreeWidgetItem(__qtreewidgetitem10)
-        QTreeWidgetItem(__qtreewidgetitem10)
-        QTreeWidgetItem(__qtreewidgetitem10)
-        QTreeWidgetItem(__qtreewidgetitem10)
-        QTreeWidgetItem(__qtreewidgetitem10)
-        QTreeWidgetItem(__qtreewidgetitem10)
-        QTreeWidgetItem(__qtreewidgetitem10)
-        __qtreewidgetitem11 = QTreeWidgetItem(self.treeWidget)
-        QTreeWidgetItem(__qtreewidgetitem11)
-        QTreeWidgetItem(__qtreewidgetitem11)
-        QTreeWidgetItem(__qtreewidgetitem11)
-        QTreeWidgetItem(__qtreewidgetitem11)
-        QTreeWidgetItem(__qtreewidgetitem11)
-        QTreeWidgetItem(__qtreewidgetitem11)
-        QTreeWidgetItem(__qtreewidgetitem11)
-        QTreeWidgetItem(__qtreewidgetitem11)
-        QTreeWidgetItem(__qtreewidgetitem11)
-        self.treeWidget.setObjectName(u"treeWidget")
-        self.treeWidget.setGeometry(QRect(9, 9, 501, 131))
-        self.groupBox_4 = QGroupBox(self.page4_ModelTraining)
-        self.groupBox_4.setObjectName(u"groupBox_4")
-        self.groupBox_4.setGeometry(QRect(40, 180, 299, 106))
-        sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.groupBox_4.sizePolicy().hasHeightForWidth())
-        self.groupBox_4.setSizePolicy(sizePolicy5)
-        self.groupBox_4.setStyleSheet(u"QGroupBox{\n"
-"    border: 2px solid rgb(17, 17, 17);\n"
-"    border-radius: 10px;\n"
-"    margin-top: 0.5em;\n"
-"	font-family: \"\u9ed1\u4f53\";\n"
-"    font-size: 20px;\n"
-"}\n"
-"\n"
-"QGroupBox::title {\n"
-"    subcontrol-origin: margin;\n"
-"    subcontrol-position: top left;\n"
-"    padding: 0 3px;\n"
-"}\n"
-"")
-        self.formLayout = QFormLayout(self.groupBox_4)
-        self.formLayout.setObjectName(u"formLayout")
-        self.radioButton = QRadioButton(self.groupBox_4)
-        self.radioButton.setObjectName(u"radioButton")
-        self.radioButton.setChecked(True)
-
-        self.formLayout.setWidget(0, QFormLayout.LabelRole, self.radioButton)
-
-        self.horizontalLayout_6 = QHBoxLayout()
-        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.radioButton_3 = QRadioButton(self.groupBox_4)
-        self.radioButton_3.setObjectName(u"radioButton_3")
-
-        self.horizontalLayout_6.addWidget(self.radioButton_3)
-
-        self.spinBox_4 = QSpinBox(self.groupBox_4)
-        self.spinBox_4.setObjectName(u"spinBox_4")
-        self.spinBox_4.setStyleSheet(u"QSpinBox {\n"
-"    border: none;\n"
-"    border-radius: 2px;\n"
-"    background-color: white;\n"
-"}\n"
-"")
-        self.spinBox_4.setMinimum(1)
-        self.spinBox_4.setValue(1)
-
-        self.horizontalLayout_6.addWidget(self.spinBox_4)
-
-
-        self.formLayout.setLayout(0, QFormLayout.FieldRole, self.horizontalLayout_6)
-
-        self.radioButton_4 = QRadioButton(self.groupBox_4)
-        self.radioButton_4.setObjectName(u"radioButton_4")
-
-        self.formLayout.setWidget(1, QFormLayout.LabelRole, self.radioButton_4)
-
-        self.spinBox = QSpinBox(self.groupBox_4)
-        self.spinBox.setObjectName(u"spinBox")
-        self.spinBox.setStyleSheet(u"QSpinBox {\n"
-"    border: none;\n"
-"    border-radius: 2px;\n"
-"    background-color: white;\n"
-"}\n"
-"")
-        self.spinBox.setMinimum(2)
-        self.spinBox.setValue(5)
-
-        self.formLayout.setWidget(1, QFormLayout.FieldRole, self.spinBox)
-
-        self.radioButton_5 = QRadioButton(self.groupBox_4)
-        self.radioButton_5.setObjectName(u"radioButton_5")
-
-        self.formLayout.setWidget(2, QFormLayout.LabelRole, self.radioButton_5)
-
-        self.spinBox_2 = QSpinBox(self.groupBox_4)
-        self.spinBox_2.setObjectName(u"spinBox_2")
-        self.spinBox_2.setStyleSheet(u"QSpinBox {\n"
-"    border: none;\n"
-"    border-radius: 2px;\n"
-"    background-color: white;\n"
-"}\n"
-"")
-        self.spinBox_2.setMinimum(2)
-        self.spinBox_2.setValue(5)
-
-        self.formLayout.setWidget(2, QFormLayout.FieldRole, self.spinBox_2)
-
-        self.groupBox_7 = QGroupBox(self.page4_ModelTraining)
-        self.groupBox_7.setObjectName(u"groupBox_7")
-        self.groupBox_7.setGeometry(QRect(480, 210, 331, 106))
-        sizePolicy6 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        sizePolicy6.setHorizontalStretch(0)
-        sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.groupBox_7.sizePolicy().hasHeightForWidth())
-        self.groupBox_7.setSizePolicy(sizePolicy6)
-        self.groupBox_7.setMaximumSize(QSize(16777215, 16777215))
-        self.groupBox_7.setStyleSheet(u"QGroupBox{\n"
-"    border: 2px solid rgb(17, 17, 17);\n"
-"    border-radius: 10px;\n"
-"    margin-top: 0.5em;\n"
-"	font-family: \"\u9ed1\u4f53\";\n"
-"    font-size: 20px;\n"
-"}\n"
-"\n"
-"QGroupBox::title {\n"
-"    subcontrol-origin: margin;\n"
-"    subcontrol-position: top left;\n"
-"    padding: 0 3px;\n"
-"}\n"
-"")
-        self.verticalLayout_26 = QVBoxLayout(self.groupBox_7)
+        self.verticalLayout_26 = QVBoxLayout(self.page4_ModelTraining)
         self.verticalLayout_26.setObjectName(u"verticalLayout_26")
-        self.horizontalLayout_10 = QHBoxLayout()
-        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.label_7 = QLabel(self.groupBox_7)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setAlignment(Qt.AlignJustify|Qt.AlignVCenter)
-
-        self.horizontalLayout_10.addWidget(self.label_7)
-
-        self.doubleSpinBox = QDoubleSpinBox(self.groupBox_7)
-        self.doubleSpinBox.setObjectName(u"doubleSpinBox")
-        self.doubleSpinBox.setFont(font)
-        self.doubleSpinBox.setStyleSheet(u"QDoubleSpinBox {\n"
-"    border: none;\n"
-"    border-radius: 2px;\n"
-"    background-color: white;\n"
-"}\n"
-"")
-        self.doubleSpinBox.setMinimum(0.010000000000000)
-        self.doubleSpinBox.setMaximum(0.990000000000000)
-        self.doubleSpinBox.setSingleStep(0.010000000000000)
-        self.doubleSpinBox.setValue(0.200000000000000)
-
-        self.horizontalLayout_10.addWidget(self.doubleSpinBox)
-
-        self.horizontalLayout_10.setStretch(0, 7)
-        self.horizontalLayout_10.setStretch(1, 10)
-
-        self.verticalLayout_26.addLayout(self.horizontalLayout_10)
-
-        self.gridLayout_2 = QGridLayout()
-        self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.checkBox_5 = QCheckBox(self.groupBox_7)
-        self.checkBox_5.setObjectName(u"checkBox_5")
-        self.checkBox_5.setFont(font)
-        self.checkBox_5.setTristate(False)
-
-        self.gridLayout_2.addWidget(self.checkBox_5, 0, 0, 1, 1)
-
-        self.checkBox_6 = QCheckBox(self.groupBox_7)
-        self.checkBox_6.setObjectName(u"checkBox_6")
-        self.checkBox_6.setFont(font)
-
-        self.gridLayout_2.addWidget(self.checkBox_6, 0, 1, 1, 1)
-
-        self.checkBox_7 = QCheckBox(self.groupBox_7)
-        self.checkBox_7.setObjectName(u"checkBox_7")
-        self.checkBox_7.setFont(font)
-
-        self.gridLayout_2.addWidget(self.checkBox_7, 0, 2, 1, 1)
-
-        self.checkBox_8 = QCheckBox(self.groupBox_7)
-        self.checkBox_8.setObjectName(u"checkBox_8")
-        self.checkBox_8.setFont(font)
-        self.checkBox_8.setAutoExclusive(False)
-
-        self.gridLayout_2.addWidget(self.checkBox_8, 1, 0, 1, 1)
-
-        self.checkBox_9 = QCheckBox(self.groupBox_7)
-        self.checkBox_9.setObjectName(u"checkBox_9")
-        sizePolicy7 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy7.setHorizontalStretch(0)
-        sizePolicy7.setVerticalStretch(0)
-        sizePolicy7.setHeightForWidth(self.checkBox_9.sizePolicy().hasHeightForWidth())
-        self.checkBox_9.setSizePolicy(sizePolicy7)
-        self.checkBox_9.setMinimumSize(QSize(95, 0))
-        self.checkBox_9.setFont(font)
-        self.checkBox_9.setAutoExclusive(False)
-
-        self.gridLayout_2.addWidget(self.checkBox_9, 1, 1, 1, 1)
-
-        self.checkBox_10 = QCheckBox(self.groupBox_7)
-        self.checkBox_10.setObjectName(u"checkBox_10")
-        sizePolicy7.setHeightForWidth(self.checkBox_10.sizePolicy().hasHeightForWidth())
-        self.checkBox_10.setSizePolicy(sizePolicy7)
-        self.checkBox_10.setMinimumSize(QSize(75, 0))
-        self.checkBox_10.setFont(font)
-        self.checkBox_10.setAutoExclusive(False)
-
-        self.gridLayout_2.addWidget(self.checkBox_10, 1, 2, 1, 1)
-
-
-        self.verticalLayout_26.addLayout(self.gridLayout_2)
-
-        self.groupBox_5 = QGroupBox(self.page4_ModelTraining)
-        self.groupBox_5.setObjectName(u"groupBox_5")
-        self.groupBox_5.setGeometry(QRect(50, 330, 299, 88))
-        sizePolicy6.setHeightForWidth(self.groupBox_5.sizePolicy().hasHeightForWidth())
-        self.groupBox_5.setSizePolicy(sizePolicy6)
-        self.groupBox_5.setMaximumSize(QSize(16777215, 16777215))
-        self.groupBox_5.setStyleSheet(u"QGroupBox{\n"
-"    border: 2px solid rgb(17, 17, 17);\n"
-"    border-radius: 10px;\n"
-"    margin-top: 0.5em;\n"
-"	font-family: \"\u9ed1\u4f53\";\n"
-"    font-size: 20px;\n"
-"}\n"
-"\n"
-"QGroupBox::title {\n"
-"    subcontrol-origin: margin;\n"
-"    subcontrol-position: top left;\n"
-"    padding: 0 3px;\n"
-"}\n"
-"")
-        self.verticalLayout_27 = QVBoxLayout(self.groupBox_5)
-        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
-        self.horizontalLayout_11 = QHBoxLayout()
-        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.label_8 = QLabel(self.groupBox_5)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setAlignment(Qt.AlignJustify|Qt.AlignVCenter)
-
-        self.horizontalLayout_11.addWidget(self.label_8)
-
-        self.spinBox_3 = QSpinBox(self.groupBox_5)
-        self.spinBox_3.setObjectName(u"spinBox_3")
-        self.spinBox_3.setStyleSheet(u"QSpinBox {\n"
-"    border: none;\n"
-"    border-radius: 2px;\n"
-"    background-color: white;\n"
-"}\n"
-"")
-        self.spinBox_3.setMinimum(1)
-        self.spinBox_3.setValue(1)
-
-        self.horizontalLayout_11.addWidget(self.spinBox_3)
-
-
-        self.verticalLayout_27.addLayout(self.horizontalLayout_11)
-
-        self.horizontalLayout_12 = QHBoxLayout()
-        self.horizontalLayout_12.setSpacing(15)
-        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
-        self.pushButton_2 = QPushButton(self.groupBox_5)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setFont(font)
-
-        self.horizontalLayout_12.addWidget(self.pushButton_2)
-
-        self.pushButton_3 = QPushButton(self.groupBox_5)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setFont(font)
-
-        self.horizontalLayout_12.addWidget(self.pushButton_3)
-
-
-        self.verticalLayout_27.addLayout(self.horizontalLayout_12)
-
-        self.groupBox_6 = QGroupBox(self.page4_ModelTraining)
-        self.groupBox_6.setObjectName(u"groupBox_6")
-        self.groupBox_6.setGeometry(QRect(480, 330, 299, 139))
-        sizePolicy6.setHeightForWidth(self.groupBox_6.sizePolicy().hasHeightForWidth())
-        self.groupBox_6.setSizePolicy(sizePolicy6)
-        self.groupBox_6.setMaximumSize(QSize(16777215, 16777215))
-        self.groupBox_6.setStyleSheet(u"QGroupBox{\n"
-"    border: 2px solid rgb(17, 17, 17);\n"
-"    border-radius: 10px;\n"
-"    margin-top: 0.5em;\n"
-"	font-family: \"\u9ed1\u4f53\";\n"
-"    font-size: 20px;\n"
-"}\n"
-"\n"
-"QGroupBox::title {\n"
-"    subcontrol-origin: margin;\n"
-"    subcontrol-position: top left;\n"
-"    padding: 0 3px;\n"
-"}\n"
-"")
-        self.gridLayout_4 = QGridLayout(self.groupBox_6)
-        self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.gridLayout_4.setHorizontalSpacing(10)
-        self.gridLayout_4.setContentsMargins(15, 15, 15, -1)
-        self.label_11 = QLabel(self.groupBox_6)
-        self.label_11.setObjectName(u"label_11")
-        self.label_11.setFont(font)
-        self.label_11.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_4.addWidget(self.label_11, 0, 2, 1, 1)
-
-        self.lineEdit_10 = QLineEdit(self.groupBox_6)
-        self.lineEdit_10.setObjectName(u"lineEdit_10")
-        self.lineEdit_10.setFont(font)
-
-        self.gridLayout_4.addWidget(self.lineEdit_10, 2, 1, 1, 1)
-
-        self.lineEdit_7 = QLineEdit(self.groupBox_6)
-        self.lineEdit_7.setObjectName(u"lineEdit_7")
-        self.lineEdit_7.setFont(font)
-
-        self.gridLayout_4.addWidget(self.lineEdit_7, 1, 1, 1, 1)
-
-        self.lineEdit_15 = QLineEdit(self.groupBox_6)
-        self.lineEdit_15.setObjectName(u"lineEdit_15")
-        self.lineEdit_15.setFont(font)
-
-        self.gridLayout_4.addWidget(self.lineEdit_15, 3, 3, 1, 1)
-
-        self.lineEdit_12 = QLineEdit(self.groupBox_6)
-        self.lineEdit_12.setObjectName(u"lineEdit_12")
-        self.lineEdit_12.setFont(font)
-
-        self.gridLayout_4.addWidget(self.lineEdit_12, 2, 3, 1, 1)
-
-        self.label_9 = QLabel(self.groupBox_6)
-        self.label_9.setObjectName(u"label_9")
-        self.label_9.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_4.addWidget(self.label_9, 3, 0, 1, 1)
-
-        self.lineEdit_14 = QLineEdit(self.groupBox_6)
-        self.lineEdit_14.setObjectName(u"lineEdit_14")
-        self.lineEdit_14.setFont(font)
-
-        self.gridLayout_4.addWidget(self.lineEdit_14, 3, 2, 1, 1)
-
-        self.lineEdit_9 = QLineEdit(self.groupBox_6)
-        self.lineEdit_9.setObjectName(u"lineEdit_9")
-        self.lineEdit_9.setFont(font)
-
-        self.gridLayout_4.addWidget(self.lineEdit_9, 1, 3, 1, 1)
-
-        self.label_10 = QLabel(self.groupBox_6)
-        self.label_10.setObjectName(u"label_10")
-        self.label_10.setFont(font)
-        self.label_10.setTextFormat(Qt.RichText)
-        self.label_10.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_4.addWidget(self.label_10, 0, 1, 1, 1)
-
-        self.label_12 = QLabel(self.groupBox_6)
-        self.label_12.setObjectName(u"label_12")
-        self.label_12.setFont(font)
-        self.label_12.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_4.addWidget(self.label_12, 0, 0, 1, 1)
-
-        self.lineEdit_11 = QLineEdit(self.groupBox_6)
-        self.lineEdit_11.setObjectName(u"lineEdit_11")
-        self.lineEdit_11.setFont(font)
-
-        self.gridLayout_4.addWidget(self.lineEdit_11, 2, 2, 1, 1)
-
-        self.lineEdit_13 = QLineEdit(self.groupBox_6)
-        self.lineEdit_13.setObjectName(u"lineEdit_13")
-        self.lineEdit_13.setFont(font)
-
-        self.gridLayout_4.addWidget(self.lineEdit_13, 3, 1, 1, 1)
-
-        self.label_13 = QLabel(self.groupBox_6)
-        self.label_13.setObjectName(u"label_13")
-        self.label_13.setFont(font)
-        self.label_13.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_4.addWidget(self.label_13, 2, 0, 1, 1)
-
-        self.label_14 = QLabel(self.groupBox_6)
-        self.label_14.setObjectName(u"label_14")
-        self.label_14.setFont(font)
-        self.label_14.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_4.addWidget(self.label_14, 0, 3, 1, 1)
-
-        self.lineEdit_8 = QLineEdit(self.groupBox_6)
-        self.lineEdit_8.setObjectName(u"lineEdit_8")
-        self.lineEdit_8.setFont(font)
-
-        self.gridLayout_4.addWidget(self.lineEdit_8, 1, 2, 1, 1)
-
-        self.label_15 = QLabel(self.groupBox_6)
-        self.label_15.setObjectName(u"label_15")
-        self.label_15.setFont(font)
-        self.label_15.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_4.addWidget(self.label_15, 1, 0, 1, 1)
-
-        self.groupBox_3 = QGroupBox(self.page4_ModelTraining)
-        self.groupBox_3.setObjectName(u"groupBox_3")
-        self.groupBox_3.setGeometry(QRect(570, 20, 299, 150))
-        self.groupBox_3.setMinimumSize(QSize(0, 150))
-        self.groupBox_3.setMaximumSize(QSize(16777215, 200))
-        self.groupBox_3.setStyleSheet(u"QGroupBox{\n"
-"    border: 2px solid rgb(17, 17, 17);\n"
-"    border-radius: 10px;\n"
-"    margin-top: 0.5em;\n"
-"	font-family: \"\u9ed1\u4f53\";\n"
-"    font-size: 20px;\n"
-"}\n"
-"\n"
-"QGroupBox::title {\n"
-"    subcontrol-origin: margin;\n"
-"    subcontrol-position: top left;\n"
-"    padding: 0 3px;\n"
-"}\n"
-"")
-        self.verticalLayout_28 = QVBoxLayout(self.groupBox_3)
-        self.verticalLayout_28.setSpacing(6)
-        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
-        self.verticalLayout_28.setContentsMargins(9, 15, -1, 9)
-        self.plainTextEdit = QPlainTextEdit(self.groupBox_3)
-        self.plainTextEdit.setObjectName(u"plainTextEdit")
-        self.plainTextEdit.setFont(font)
-        self.plainTextEdit.setStyleSheet(u"QPlainTextEdit {\n"
-"    border-radius: 10px;\n"
-"	border: none;\n"
-"	background-color: #ffffff;\n"
-"}\n"
-"")
-
-        self.verticalLayout_28.addWidget(self.plainTextEdit)
+        self.row_5 = QFrame(self.page4_ModelTraining)
+        self.row_5.setObjectName(u"row_5")
+        self.row_5.setMinimumSize(QSize(0, 150))
+        self.row_5.setStyleSheet(u"")
+        self.row_5.setFrameShape(QFrame.StyledPanel)
+        self.row_5.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_31 = QVBoxLayout(self.row_5)
+        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.mdiArea_ModelTraining = QMdiArea(self.row_5)
+        self.mdiArea_ModelTraining.setObjectName(u"mdiArea_ModelTraining")
+        self.mdiArea_ModelTraining.setStyleSheet(u"")
+
+        self.verticalLayout_31.addWidget(self.mdiArea_ModelTraining)
+
+
+        self.verticalLayout_26.addWidget(self.row_5)
 
         self.stackedWidget.addWidget(self.page4_ModelTraining)
         self.page5_ResultAnalysis = QWidget()
@@ -2057,7 +1595,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
         self.tabWidgetMLRawData.setCurrentIndex(0)
 
 
@@ -2069,7 +1607,7 @@ class Ui_MainWindow(object):
         self.titleLeftApp.setText(QCoreApplication.translate("MainWindow", u"DataPilot", None))
         self.titleLeftDescription.setText(QCoreApplication.translate("MainWindow", u"ML GUI / Data Deep Explore", None))
         self.toggleButton.setText(QCoreApplication.translate("MainWindow", u"Hide", None))
-        self.btn_home.setText(QCoreApplication.translate("MainWindow", u"Home", None))
+        self.btn_home.setText(QCoreApplication.translate("MainWindow", u"\u4e3b\u9875", None))
         self.btn_FeatureProcessing.setText(QCoreApplication.translate("MainWindow", u"\u7279\u5f81\u5904\u7406", None))
         self.btn_FeatureSelection.setText(QCoreApplication.translate("MainWindow", u"\u7279\u5f81\u9009\u62e9", None))
         self.btn_ModelTraining.setText(QCoreApplication.translate("MainWindow", u"\u6a21\u578b\u8bad\u7ec3", None))
@@ -2091,16 +1629,17 @@ class Ui_MainWindow(object):
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#ff79c6;\">PyDracula</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">An interface created using Python and PySide (support for PyQt), and with colors based on the Dracula theme created by Zen"
-                        "o Rocha.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">MIT License</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#bd93f9;\">Created by: Wanderson M. Pimenta</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#ff79c6;\">Convert UI</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#ffffff;\">pyside6-uic main.ui &gt; ui_main.py</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-in"
-                        "dent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#ff79c6;\">Convert QRC</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#ffffff;\">pyside6-rcc resources.qrc -o resources_rc.py</span></p></body></html>", None))
+"<p align=\"center\" style=\" margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:700; color:#ff55ff;\">DataPilot</span></p>\n"
+"<p align=\"center\" style=\" margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Microsoft YaHei UI';\">A versatile PySide6-based GUI for simplified machine learning workflow. Facilitates data preprocessing, feature selection, "
+                        "model training, and results visualization for both beginners and experienced users.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">MIT License</p>\n"
+"<p align=\"center\" style=\" margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Created by: <span style=\" font-weight:700; color:#ff55ff;\">liyihang</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:700; color:#ff55ff;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:700;\">Convert UI</span></p>\n"
+"<p align=\"center\" style=\" margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\""
+                        ">pyside6-uic main.ui &gt; ui_main.py</p>\n"
+"<p align=\"center\" style=\" margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:700;\">Convert QRC</span></p>\n"
+"<p align=\"center\" style=\" margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">pyside6-rcc resources.qrc -o resources_rc.py</p></body></html>", None))
         self.titleRightInfo.setText(QCoreApplication.translate("MainWindow", u"DataPilot", None))
         self.btn_theme.setText("")
 #if QT_CONFIG(tooltip)
@@ -2171,183 +1710,6 @@ class Ui_MainWindow(object):
         self.tabWidgetMLRawData.setTabText(self.tabWidgetMLRawData.indexOf(self.tab_3), QCoreApplication.translate("MainWindow", u"\u5f02\u5e38\u503c\u5904\u7406\u540e", None))
         self.tabWidgetMLRawData.setTabText(self.tabWidgetMLRawData.indexOf(self.tab_4), QCoreApplication.translate("MainWindow", u"\u79bb\u6563\u503c\u5904\u7406\u540e", None))
         self.tabWidgetMLRawData.setTabText(self.tabWidgetMLRawData.indexOf(self.tab_5), QCoreApplication.translate("MainWindow", u"\u6570\u636e\u5f52\u4e00\u5316\u540e", None))
-        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"\u8fc7\u6ee4\u6cd5\uff08Filter methods\uff09", None))
-        self.checkBox_3.setText(QCoreApplication.translate("MainWindow", u"\u5305\u88f9\u6cd5\uff08Wrapper methods\uff09", None))
-        self.checkBox_4.setText(QCoreApplication.translate("MainWindow", u"\u5d4c\u5165\u6cd5\uff08Embedded methods\uff09", None))
-        ___qtreewidgetitem = self.treeWidget_featureSelection.headerItem()
-        ___qtreewidgetitem.setText(0, QCoreApplication.translate("MainWindow", u"\u7279\u5f81\u9009\u62e9", None));
-
-        __sortingEnabled = self.treeWidget_featureSelection.isSortingEnabled()
-        self.treeWidget_featureSelection.setSortingEnabled(False)
-        ___qtreewidgetitem1 = self.treeWidget_featureSelection.topLevelItem(0)
-        ___qtreewidgetitem1.setText(0, QCoreApplication.translate("MainWindow", u"Filter\u8fc7\u6ee4\u6cd5", None));
-        ___qtreewidgetitem2 = ___qtreewidgetitem1.child(0)
-        ___qtreewidgetitem2.setText(0, QCoreApplication.translate("MainWindow", u"\u65b9\u5dee\u8fc7\u6ee4", None));
-        ___qtreewidgetitem3 = ___qtreewidgetitem1.child(1)
-        ___qtreewidgetitem3.setText(0, QCoreApplication.translate("MainWindow", u"\u76f8\u5173\u6027\u8fc7\u6ee4", None));
-        ___qtreewidgetitem4 = ___qtreewidgetitem3.child(0)
-        ___qtreewidgetitem4.setText(0, QCoreApplication.translate("MainWindow", u"\u5361\u65b9\u8fc7\u6ee4", None));
-        ___qtreewidgetitem5 = ___qtreewidgetitem3.child(1)
-        ___qtreewidgetitem5.setText(0, QCoreApplication.translate("MainWindow", u"F\u68c0\u9a8c", None));
-        ___qtreewidgetitem6 = ___qtreewidgetitem3.child(2)
-        ___qtreewidgetitem6.setText(0, QCoreApplication.translate("MainWindow", u"\u4e92\u4fe1\u606f\u6cd5", None));
-        ___qtreewidgetitem7 = self.treeWidget_featureSelection.topLevelItem(1)
-        ___qtreewidgetitem7.setText(0, QCoreApplication.translate("MainWindow", u"Embedded\u5d4c\u5165\u6cd5", None));
-        ___qtreewidgetitem8 = self.treeWidget_featureSelection.topLevelItem(2)
-        ___qtreewidgetitem8.setText(0, QCoreApplication.translate("MainWindow", u"Wrapper\u5305\u88c5\u6cd5", None));
-        self.treeWidget_featureSelection.setSortingEnabled(__sortingEnabled)
-
-        self.btn_eatureSelection.setText(QCoreApplication.translate("MainWindow", u"\u7279\u5f81\u7b5b\u9009", None))
-        self.tabWidget_FeatureSelectionData.setTabText(self.tabWidget_FeatureSelectionData.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Tab 1", None))
-        self.tabWidget_FeatureSelectionData.setTabText(self.tabWidget_FeatureSelectionData.indexOf(self.tab_6), QCoreApplication.translate("MainWindow", u"Tab 2", None))
-        ___qtreewidgetitem9 = self.treeWidget.headerItem()
-        ___qtreewidgetitem9.setText(0, QCoreApplication.translate("MainWindow", u"\u7b97\u6cd5\u9009\u62e9", None));
-
-        __sortingEnabled1 = self.treeWidget.isSortingEnabled()
-        self.treeWidget.setSortingEnabled(False)
-        ___qtreewidgetitem10 = self.treeWidget.topLevelItem(0)
-        ___qtreewidgetitem10.setText(0, QCoreApplication.translate("MainWindow", u"\u56de\u5f52", None));
-        ___qtreewidgetitem11 = ___qtreewidgetitem10.child(0)
-        ___qtreewidgetitem11.setText(0, QCoreApplication.translate("MainWindow", u"\u7ebf\u6027\u56de\u5f52 (Linear Regression)", None));
-        ___qtreewidgetitem12 = ___qtreewidgetitem10.child(1)
-        ___qtreewidgetitem12.setText(0, QCoreApplication.translate("MainWindow", u"\u5cad\u56de\u5f52 (Ridge Regression)", None));
-        ___qtreewidgetitem13 = ___qtreewidgetitem10.child(2)
-        ___qtreewidgetitem13.setText(0, QCoreApplication.translate("MainWindow", u"\u5957\u7d22\u56de\u5f52 (Lasso Regression)", None));
-        ___qtreewidgetitem14 = ___qtreewidgetitem10.child(3)
-        ___qtreewidgetitem14.setText(0, QCoreApplication.translate("MainWindow", u"\u5f39\u6027\u7f51\u7edc (Elastic Net)", None));
-        ___qtreewidgetitem15 = ___qtreewidgetitem10.child(4)
-        ___qtreewidgetitem15.setText(0, QCoreApplication.translate("MainWindow", u"\u51b3\u7b56\u6811\u56de\u5f52 (Decision Tree Regression)", None));
-        ___qtreewidgetitem16 = ___qtreewidgetitem10.child(5)
-        ___qtreewidgetitem16.setText(0, QCoreApplication.translate("MainWindow", u"\u968f\u673a\u68ee\u6797\u56de\u5f52 (Random Forest Regression)", None));
-        ___qtreewidgetitem17 = ___qtreewidgetitem10.child(6)
-        ___qtreewidgetitem17.setText(0, QCoreApplication.translate("MainWindow", u"\u68af\u5ea6\u63d0\u5347\u56de\u5f52\u6811 (Gradient Boosting Regression Trees\uff0cGBRT)", None));
-        ___qtreewidgetitem18 = ___qtreewidgetitem10.child(7)
-        ___qtreewidgetitem18.setText(0, QCoreApplication.translate("MainWindow", u"\u652f\u6301\u5411\u91cf\u673a\u56de\u5f52 (Support Vector Machine Regression\uff0cSVMR)", None));
-        ___qtreewidgetitem19 = ___qtreewidgetitem10.child(8)
-        ___qtreewidgetitem19.setText(0, QCoreApplication.translate("MainWindow", u"\u795e\u7ecf\u7f51\u7edc\u56de\u5f52 (Neural Networks Regression)", None));
-        ___qtreewidgetitem20 = ___qtreewidgetitem10.child(9)
-        ___qtreewidgetitem20.setText(0, QCoreApplication.translate("MainWindow", u"K\u8fd1\u90bb\u56de\u5f52 (K-Nearest Neighbors Regression\uff0cKNN)", None));
-        ___qtreewidgetitem21 = self.treeWidget.topLevelItem(1)
-        ___qtreewidgetitem21.setText(0, QCoreApplication.translate("MainWindow", u"\u5206\u7c7b", None));
-        ___qtreewidgetitem22 = ___qtreewidgetitem21.child(0)
-        ___qtreewidgetitem22.setText(0, QCoreApplication.translate("MainWindow", u"\u903b\u8f91\u56de\u5f52 (Logistic Regression)", None));
-        ___qtreewidgetitem23 = ___qtreewidgetitem21.child(1)
-        ___qtreewidgetitem23.setText(0, QCoreApplication.translate("MainWindow", u"K\u8fd1\u90bb\u5206\u7c7b (K-Nearest Neighbors\uff0cKNN)", None));
-        ___qtreewidgetitem24 = ___qtreewidgetitem21.child(2)
-        ___qtreewidgetitem24.setText(0, QCoreApplication.translate("MainWindow", u"\u652f\u6301\u5411\u91cf\u673a (Support Vector Machine\uff0cSVM)", None));
-        ___qtreewidgetitem25 = ___qtreewidgetitem21.child(3)
-        ___qtreewidgetitem25.setText(0, QCoreApplication.translate("MainWindow", u"\u51b3\u7b56\u6811 (Decision Tree)", None));
-        ___qtreewidgetitem26 = ___qtreewidgetitem21.child(4)
-        ___qtreewidgetitem26.setText(0, QCoreApplication.translate("MainWindow", u"\u968f\u673a\u68ee\u6797 (Random Forest)", None));
-        ___qtreewidgetitem27 = ___qtreewidgetitem21.child(5)
-        ___qtreewidgetitem27.setText(0, QCoreApplication.translate("MainWindow", u"\u68af\u5ea6\u63d0\u5347\u6811 (Gradient Boosting Trees)", None));
-        ___qtreewidgetitem28 = ___qtreewidgetitem21.child(6)
-        ___qtreewidgetitem28.setText(0, QCoreApplication.translate("MainWindow", u"\u6734\u7d20\u8d1d\u53f6\u65af (Naive Bayes)", None));
-        ___qtreewidgetitem29 = ___qtreewidgetitem21.child(7)
-        ___qtreewidgetitem29.setText(0, QCoreApplication.translate("MainWindow", u"\u795e\u7ecf\u7f51\u7edc (Neural Networks)", None));
-        ___qtreewidgetitem30 = ___qtreewidgetitem21.child(8)
-        ___qtreewidgetitem30.setText(0, QCoreApplication.translate("MainWindow", u"AdaBoost", None));
-        ___qtreewidgetitem31 = ___qtreewidgetitem21.child(9)
-        ___qtreewidgetitem31.setText(0, QCoreApplication.translate("MainWindow", u"XGBoost", None));
-        ___qtreewidgetitem32 = ___qtreewidgetitem21.child(10)
-        ___qtreewidgetitem32.setText(0, QCoreApplication.translate("MainWindow", u"LightGBM", None));
-        ___qtreewidgetitem33 = ___qtreewidgetitem21.child(11)
-        ___qtreewidgetitem33.setText(0, QCoreApplication.translate("MainWindow", u"CatBoost", None));
-        ___qtreewidgetitem34 = self.treeWidget.topLevelItem(2)
-        ___qtreewidgetitem34.setText(0, QCoreApplication.translate("MainWindow", u"\u964d\u7ef4", None));
-        ___qtreewidgetitem35 = ___qtreewidgetitem34.child(0)
-        ___qtreewidgetitem35.setText(0, QCoreApplication.translate("MainWindow", u"\u4e3b\u6210\u5206\u5206\u6790 (Principal Component Analysis\uff0cPCA)", None));
-        ___qtreewidgetitem36 = ___qtreewidgetitem34.child(1)
-        ___qtreewidgetitem36.setText(0, QCoreApplication.translate("MainWindow", u"\u7ebf\u6027\u5224\u522b\u5206\u6790 (Linear Discriminant Analysis\uff0cLDA)", None));
-        ___qtreewidgetitem37 = ___qtreewidgetitem34.child(2)
-        ___qtreewidgetitem37.setText(0, QCoreApplication.translate("MainWindow", u"t-\u5206\u5e03\u968f\u673a\u90bb\u57df\u5d4c\u5165 (t-Distributed Stochastic Neighbor Embedding\uff0ct-SNE)", None));
-        ___qtreewidgetitem38 = ___qtreewidgetitem34.child(3)
-        ___qtreewidgetitem38.setText(0, QCoreApplication.translate("MainWindow", u"\u56e0\u5b50\u5206\u6790 (Factor Analysis)", None));
-        ___qtreewidgetitem39 = ___qtreewidgetitem34.child(4)
-        ___qtreewidgetitem39.setText(0, QCoreApplication.translate("MainWindow", u"\u72ec\u7acb\u6210\u5206\u5206\u6790 (Independent Component Analysis\uff0cICA)", None));
-        ___qtreewidgetitem40 = ___qtreewidgetitem34.child(5)
-        ___qtreewidgetitem40.setText(0, QCoreApplication.translate("MainWindow", u"\u81ea\u52a8\u7f16\u7801\u5668 (Autoencoders)", None));
-        ___qtreewidgetitem41 = ___qtreewidgetitem34.child(6)
-        ___qtreewidgetitem41.setText(0, QCoreApplication.translate("MainWindow", u"\u591a\u7ef4\u5c3a\u5ea6\u7f29\u51cf (Multidimensional Scaling\uff0cMDS)", None));
-        ___qtreewidgetitem42 = ___qtreewidgetitem34.child(7)
-        ___qtreewidgetitem42.setText(0, QCoreApplication.translate("MainWindow", u"UMAP (Uniform Manifold Approximation and Projection)", None));
-        ___qtreewidgetitem43 = self.treeWidget.topLevelItem(3)
-        ___qtreewidgetitem43.setText(0, QCoreApplication.translate("MainWindow", u"\u805a\u7c7b", None));
-        ___qtreewidgetitem44 = ___qtreewidgetitem43.child(0)
-        ___qtreewidgetitem44.setText(0, QCoreApplication.translate("MainWindow", u"K\u5747\u503c\u805a\u7c7b (K-Means Clustering)", None));
-        ___qtreewidgetitem45 = ___qtreewidgetitem43.child(1)
-        ___qtreewidgetitem45.setText(0, QCoreApplication.translate("MainWindow", u"\u5c42\u6b21\u805a\u7c7b (HierarchicalClustering)", None));
-        ___qtreewidgetitem46 = ___qtreewidgetitem43.child(2)
-        ___qtreewidgetitem46.setText(0, QCoreApplication.translate("MainWindow", u"DBSCAN (Density-Based Spatial Clustering of Applications with Noise)", None));
-        ___qtreewidgetitem47 = ___qtreewidgetitem43.child(3)
-        ___qtreewidgetitem47.setText(0, QCoreApplication.translate("MainWindow", u"\u9ad8\u65af\u6df7\u5408\u6a21\u578b (Gaussian Mixture Models\uff0cGMM)", None));
-        ___qtreewidgetitem48 = ___qtreewidgetitem43.child(4)
-        ___qtreewidgetitem48.setText(0, QCoreApplication.translate("MainWindow", u"\u5149\u8c31\u805a\u7c7b (SpectralClustering)", None));
-        ___qtreewidgetitem49 = ___qtreewidgetitem43.child(5)
-        ___qtreewidgetitem49.setText(0, QCoreApplication.translate("MainWindow", u"\u5747\u503c\u6f02\u79fb\u805a\u7c7b (Mean Shift Clustering)", None));
-        ___qtreewidgetitem50 = ___qtreewidgetitem43.child(6)
-        ___qtreewidgetitem50.setText(0, QCoreApplication.translate("MainWindow", u"\u5bc6\u5ea6\u5cf0\u503c\u805a\u7c7b (Density Peak Clustering)", None));
-        ___qtreewidgetitem51 = ___qtreewidgetitem43.child(7)
-        ___qtreewidgetitem51.setText(0, QCoreApplication.translate("MainWindow", u"\u81ea\u7ec4\u7ec7\u6620\u5c04 (Self-Organizing Maps\uff0cSOM)", None));
-        ___qtreewidgetitem52 = ___qtreewidgetitem43.child(8)
-        ___qtreewidgetitem52.setText(0, QCoreApplication.translate("MainWindow", u"OPTICS (Ordering Points To ldentify the Clustering Structure)", None));
-        self.treeWidget.setSortingEnabled(__sortingEnabled1)
-
-        self.groupBox_4.setTitle(QCoreApplication.translate("MainWindow", u"\u4ea4\u53c9\u9a8c\u8bc1", None))
-        self.radioButton.setText(QCoreApplication.translate("MainWindow", u"\u7559\u51fa\u4ea4\u53c9\u9a8c\u8bc1", None))
-#if QT_CONFIG(tooltip)
-        self.radioButton_3.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">\u8bbe\u4e3a</span><span style=\" font-size:12pt; font-weight:600; color:#ff0000;\">1</span><span style=\" font-size:12pt;\">\u5c06\u8fdb\u884c\u7559\u4e00\u6cd5\u4ea4\u53c9\u9a8c\u8bc1\uff0c\u5927\u4e8e1\u5c06\u8fdb\u884c\u7559P\u6cd5\u4ea4\u53c9\u9a8c\u8bc1\u3002</span></p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.radioButton_3.setText(QCoreApplication.translate("MainWindow", u"\u75591/P\u6cd5\u4ea4\u53c9\u9a8c\u8bc1", None))
-        self.radioButton_4.setText(QCoreApplication.translate("MainWindow", u"K\u6298\u4ea4\u53c9\u9a8c\u8bc1", None))
-        self.radioButton_5.setText(QCoreApplication.translate("MainWindow", u"\u5206\u5c42\u4ea4\u53c9\u9a8c\u8bc1", None))
-        self.groupBox_7.setTitle(QCoreApplication.translate("MainWindow", u"\u6570\u636e\u5212\u5206", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"\u72ec\u7acb\u6d4b\u8bd5\u96c6\u5927\u5c0f:", None))
-#if QT_CONFIG(tooltip)
-        self.checkBox_5.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"justify\"><span style=\" font-size:12pt;\">shuffle\u53c2\u6570\u53ef\u4ee5\u7528\u6765\u63a7\u5236\u8bad\u7ec3\u6570\u636e\u7684\u987a\u5e8f\u662f\u5426\u6253\u4e71\u3002\u5728\u673a\u5668\u5b66\u4e60\u4e2d\uff0c\u6253\u4e71\u8bad\u7ec3\u6570\u636e\u7684\u987a\u5e8f\u53ef\u4ee5\u5e2e\u52a9\u6a21\u578b\u66f4\u597d\u5730\u5b66\u4e60\u7279\u5f81\u548c\u907f\u514d\u51fa\u73b0\u8fc7\u62df\u5408\u7684\u95ee\u9898.\u5f53shuffle\u53c2\u6570\u8bbe\u7f6e\u4e3aTrue\u65f6\uff0c\u8bad\u7ec3\u6570\u636e\u4f1a\u88ab\u968f\u673a\u6253\u4e71\uff0c\u5426\u5219\u8bad\u7ec3\u6570\u636e\u4f1a\u6309\u7167\u539f\u59cb\u987a\u5e8f\u4f7f\u7528\u3002</span></p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.checkBox_5.setText(QCoreApplication.translate("MainWindow", u"Shuffle", None))
-#if QT_CONFIG(tooltip)
-        self.checkBox_6.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"justify\"><span style=\" font-size:12pt;\">random_seed\u662f\u4e3arandom_state\u53c2\u6570\u63d0\u4f9b\u4e00\u4e2a\u968f\u673a\u79cd\u5b50\uff0c\u4e3a\u4e86\u63a7\u5236\u6bcf\u6b21\u751f\u6210\u7684\u968f\u673a\u6570\u76f8\u540c\uff0c\u4fdd\u8bc1\u7ed3\u679c\u7684\u53ef\u91cd\u590d\u6027\u3002\u5728\u67d0\u4e9b\u60c5\u51b5\u4e0b\uff0c\u6211\u4eec\u9700\u8981\u591a\u6b21\u8fd0\u884c\u76f8\u540c\u7684\u4ee3\u7801\uff0c\u4ee5\u5f97\u5230\u5e73\u5747\u7ed3\u679c\u6216\u5bf9\u7ed3\u679c\u8fdb\u884c\u6bd4\u8f83\u3002\u5982\u679c\u4e0d\u8bbe\u7f6erandom_state\u53c2\u6570\uff0c\u6bcf\u6b21\u751f\u6210\u7684\u968f\u673a\u6570\u5c06\u4e0d\u540c\uff0c\u8fd9\u6837\u5c31\u65e0\u6cd5\u4fdd\u8bc1\u7ed3\u679c\u7684\u4e00\u81f4\u6027\u3002</span></p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.checkBox_6.setText(QCoreApplication.translate("MainWindow", u"Random_seed", None))
-        self.checkBox_7.setText(QCoreApplication.translate("MainWindow", u"Save model", None))
-#if QT_CONFIG(tooltip)
-        self.checkBox_8.setToolTip(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Z-score\u6807\u51c6\u5316(Standardization)\uff1a\u5c06\u6570\u636e\u7f29\u653e\u5230\u5747\u503c\u4e3a0\uff0c\u6807\u51c6\u5dee\u4e3a1\u7684\u6b63\u6001\u5206\u5e03\u3002\u5bf9\u4e8e\u6bcf\u4e2a\u7279\u5f81\uff0c\u5c06\u539f\u59cb\u503c\u51cf\u53bb\u5747\u503c\uff0c\u7136\u540e\u9664\u4ee5\u6807\u51c6\u5dee\u3002</span></p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.checkBox_8.setText(QCoreApplication.translate("MainWindow", u"Z-score", None))
-#if QT_CONFIG(tooltip)
-        self.checkBox_9.setToolTip(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"justify\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">\u6700\u5c0f-\u6700\u5927\u89c4\u8303\u5316(Min-Max Scaling)\uff1a\u5c06\u6570\u636e\u7f29\u653e\u5230[0,1]\u7684\u8303\u56f4\u5185\u3002\u5bf9\u4e8e\u6bcf\u4e2a\u7279\u5f81\uff0c\u5c06\u539f\u59cb\u503c\u51cf\u53bb\u6700\u5c0f\u503c\uff0c\u7136\u540e\u9664\u4ee5\u6700\u5927\u503c\u548c\u6700\u5c0f\u503c\u4e4b\u5dee\u3002</span></p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.checkBox_9.setText(QCoreApplication.translate("MainWindow", u"MinMax", None))
-#if QT_CONFIG(tooltip)
-        self.checkBox_10.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"justify\"><span style=\" font-size:12pt;\">MaxAbsScaler\uff1a\u9996\u5148\u8ba1\u7b97\u6bcf\u4e2a\u7279\u5f81\u7684\u6700\u5927\u7edd\u5bf9\u503c\uff0c\u518d\u5c06\u6bcf\u4e2a\u7279\u5f81\u9664\u4ee5\u5176\u6700\u5927\u503c\u7edd\u5bf9\u503c\uff0c\u4ece\u800c\u5c06\u7279\u5f81\u7f29\u653e\u5230[-1,1]\u4e4b\u95f4\u3002\u8fd9\u79cd\u7f29\u653e\u65b9\u5f0f\u4fdd\u7559\u4e86\u7279\u5f81\u7684\u7b26\u53f7\u4fe1\u606f\uff0c\u4e14\u4e0d\u4f1a\u7834\u574f\u6570\u636e\u7684\u7a00\u758f\u6027\u3002</span></p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.checkBox_10.setText(QCoreApplication.translate("MainWindow", u"MaxAbs", None))
-        self.groupBox_5.setTitle(QCoreApplication.translate("MainWindow", u"\u9884\u6d4b\u63a7\u5236", None))
-#if QT_CONFIG(tooltip)
-        self.label_8.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"justify\"><span style=\" font-size:12pt;\">\u9700\u8981\u6ce8\u610f\u7684\u662f\uff0c\u8fd9\u4e2a\u53c2\u6570\u53ea\u5728\u6570\u636e\u91cf\u5f88\u5927\u65f6\u624d\u4f1a\u6709\u6548\u679c\uff0c\u5bf9\u4e8e\u8f83\u5c0f\u7684\u6570\u636e\u96c6\uff0c\u4f7f\u7528\u591a\u6838\u53cd\u800c\u4f1a\u5bfc\u81f4\u7a0b\u5e8f\u8fd0\u884c\u53d8\u6162\u3002\u53e6\u5916\uff0c\u6709\u4e9b\u7b97\u6cd5\u672c\u8eab\u5e76\u4e0d\u652f\u6301\u5e76\u884c\u8ba1\u7b97\uff0c\u6b64\u65f6\u8bbe\u7f6en_jobs\u4e5f\u4e0d\u4f1a\u8d77\u5230\u52a0\u901f\u7684\u4f5c\u7528\u3002<br/></span></p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.label_8.setText(QCoreApplication.translate("MainWindow", u"CV\u542f\u52a8\u7684CPU\u6838\u5fc3\u6570:", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Start", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Stop", None))
-        self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"\u9884\u6d4b\u5f97\u5206", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"MAE", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"Test", None))
-        self.label_10.setText(QCoreApplication.translate("MainWindow", u"R2", None))
-        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Metric", None))
-        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Validation", None))
-        self.label_14.setText(QCoreApplication.translate("MainWindow", u"RMSE", None))
-        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Training", None))
-        self.groupBox_3.setTitle(QCoreApplication.translate("MainWindow", u"\u53c2\u6570\u8bbe\u7f6e", None))
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"Message", None))
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))

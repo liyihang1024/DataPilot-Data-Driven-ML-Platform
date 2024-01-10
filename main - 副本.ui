@@ -666,8 +666,8 @@ Button */
                <family>Segoe UI Semibold</family>
                <pointsize>12</pointsize>
                <italic>false</italic>
-               <bold>false</bold>
                <kerning>true</kerning>
+               <fontweight></fontweight>
               </font>
              </property>
              <property name="text">
@@ -858,7 +858,7 @@ Button */
                    <string notr="true">background-image: url(:/icons/images/icons/cil-home.png);</string>
                   </property>
                   <property name="text">
-                   <string>主页</string>
+                   <string>Home</string>
                   </property>
                  </widget>
                 </item>
@@ -1448,15 +1448,14 @@ hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:700; color:#ff55ff;&quot;&gt;DataPilot&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Microsoft YaHei UI';&quot;&gt;A versatile PySide6-based GUI for simplified machine learning workflow. Facilitates data preprocessing, feature selection, model training, and results visualization for both beginners and experienced users.&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;MIT License&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Created by: &lt;span style=&quot; font-weight:700; color:#ff55ff;&quot;&gt;liyihang&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-weight:700; color:#ff55ff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Convert UI&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;pyside6-uic main.ui &amp;gt; ui_main.py&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Convert QRC&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:6px; margin-bottom:6px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;pyside6-rcc resources.qrc -o resources_rc.py&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff79c6;&quot;&gt;PyDracula&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;An interface created using Python and PySide (support for PyQt), and with colors based on the Dracula theme created by Zeno Rocha.&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;MIT License&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#bd93f9;&quot;&gt;Created by: Wanderson M. Pimenta&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff79c6;&quot;&gt;Convert UI&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#ffffff;&quot;&gt;pyside6-uic main.ui &amp;gt; ui_main.py&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff79c6;&quot;&gt;Convert QRC&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; color:#ffffff;&quot;&gt;pyside6-rcc resources.qrc -o resources_rc.py&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                  </widget>
                 </item>
@@ -1903,7 +1902,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <enum>QFrame::NoFrame</enum>
                      </property>
                      <property name="currentIndex">
-                      <number>3</number>
+                      <number>2</number>
                      </property>
                      <widget class="QWidget" name="page1_Home">
                       <property name="styleSheet">
@@ -2127,7 +2126,7 @@ QPushButton:pressed {
                                      <cursorShape>PointingHandCursor</cursorShape>
                                     </property>
                                     <property name="styleSheet">
-                                     <string notr="true"/>
+                                     <string notr="true">background-color: rgb(52, 59, 72);</string>
                                     </property>
                                     <property name="text">
                                      <string>Open</string>
@@ -2158,7 +2157,7 @@ QPushButton:pressed {
                                      <cursorShape>PointingHandCursor</cursorShape>
                                     </property>
                                     <property name="styleSheet">
-                                     <string notr="true"/>
+                                     <string notr="true">background-color: rgb(52, 59, 72);</string>
                                     </property>
                                     <property name="text">
                                      <string>FeatureProcessing</string>
@@ -2400,14 +2399,6 @@ QPushButton:pressed {
                           </item>
                           <item>
                            <widget class="QFrame" name="frame_2">
-                            <property name="styleSheet">
-                             <string notr="true">QFrame {
-    border: none; /* 移除边框 */
-    padding: 0px; /* 移除内边距 */
-    background-color: rgb(33, 37, 43); /* 设置背景色 */
-}
-</string>
-                            </property>
                             <property name="frameShape">
                              <enum>QFrame::StyledPanel</enum>
                             </property>
@@ -2439,7 +2430,8 @@ QTabBar::tab:selected, QTabBar::tab:hover {
 
 QTabBar::tab:selected {
     border-bottom-color: white; /* same as pane color */
-}</string>
+}
+</string>
                                </property>
                                <property name="currentIndex">
                                 <number>0</number>
@@ -2498,27 +2490,8 @@ QTabBar::tab:selected {
                              </item>
                              <item>
                               <widget class="QProgressBar" name="progressBar">
-                               <property name="styleSheet">
-                                <string notr="true">QProgressBar {
-    border: 1px solid #76797C;
-    border-radius: 2px;
-    height: 10px;  /* 调整这个值来改变进度条的高度 */
-	color: white;  /* 设置进度条的文本颜色 */
-}
-
-QProgressBar::chunk {
-    background-color: #ffaa7f;
-}
-</string>
-                               </property>
-                               <property name="maximum">
-                                <number>100</number>
-                               </property>
                                <property name="value">
                                 <number>0</number>
-                               </property>
-                               <property name="alignment">
-                                <set>Qt::AlignCenter</set>
                                </property>
                               </widget>
                              </item>
@@ -2540,59 +2513,1237 @@ QProgressBar::chunk {
                            <height>150</height>
                           </size>
                          </property>
-                         <property name="styleSheet">
-                          <string notr="true"/>
-                         </property>
                          <property name="frameShape">
                           <enum>QFrame::StyledPanel</enum>
                          </property>
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
                          </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_30">
+                         <widget class="QCheckBox" name="checkBox">
+                          <property name="geometry">
+                           <rect>
+                            <x>50</x>
+                            <y>10</y>
+                            <width>181</width>
+                            <height>31</height>
+                           </rect>
+                          </property>
+                          <property name="text">
+                           <string>过滤法（Filter methods）</string>
+                          </property>
+                         </widget>
+                         <widget class="QCheckBox" name="checkBox_3">
+                          <property name="geometry">
+                           <rect>
+                            <x>270</x>
+                            <y>10</y>
+                            <width>211</width>
+                            <height>31</height>
+                           </rect>
+                          </property>
+                          <property name="text">
+                           <string>包裹法（Wrapper methods）</string>
+                          </property>
+                         </widget>
+                         <widget class="QCheckBox" name="checkBox_4">
+                          <property name="geometry">
+                           <rect>
+                            <x>530</x>
+                            <y>10</y>
+                            <width>211</width>
+                            <height>31</height>
+                           </rect>
+                          </property>
+                          <property name="text">
+                           <string>嵌入法（Embedded methods）</string>
+                          </property>
+                         </widget>
+                         <widget class="QTreeWidget" name="treeWidget_featureSelection">
+                          <property name="geometry">
+                           <rect>
+                            <x>40</x>
+                            <y>60</y>
+                            <width>256</width>
+                            <height>192</height>
+                           </rect>
+                          </property>
+                          <column>
+                           <property name="text">
+                            <string>特征选择</string>
+                           </property>
+                          </column>
                           <item>
-                           <widget class="QMdiArea" name="mdiArea_FeatureSelection">
-                            <property name="styleSheet">
-                             <string notr="true"/>
+                           <property name="text">
+                            <string>Filter过滤法</string>
+                           </property>
+                           <item>
+                            <property name="text">
+                             <string>方差过滤</string>
                             </property>
-                           </widget>
+                            <property name="checkState">
+                             <enum>Unchecked</enum>
+                            </property>
+                           </item>
+                           <item>
+                            <property name="text">
+                             <string>相关性过滤</string>
+                            </property>
+                            <item>
+                             <property name="text">
+                              <string>卡方过滤</string>
+                             </property>
+                             <property name="checkState">
+                              <enum>Unchecked</enum>
+                             </property>
+                            </item>
+                            <item>
+                             <property name="text">
+                              <string>F检验</string>
+                             </property>
+                             <property name="checkState">
+                              <enum>Unchecked</enum>
+                             </property>
+                            </item>
+                            <item>
+                             <property name="text">
+                              <string>互信息法</string>
+                             </property>
+                             <property name="checkState">
+                              <enum>Unchecked</enum>
+                             </property>
+                            </item>
+                           </item>
                           </item>
-                         </layout>
+                          <item>
+                           <property name="text">
+                            <string>Embedded嵌入法</string>
+                           </property>
+                           <property name="checkState">
+                            <enum>Unchecked</enum>
+                           </property>
+                          </item>
+                          <item>
+                           <property name="text">
+                            <string>Wrapper包装法</string>
+                           </property>
+                           <property name="checkState">
+                            <enum>Unchecked</enum>
+                           </property>
+                          </item>
+                         </widget>
+                         <widget class="QPushButton" name="btn_eatureSelection">
+                          <property name="geometry">
+                           <rect>
+                            <x>580</x>
+                            <y>460</y>
+                            <width>75</width>
+                            <height>24</height>
+                           </rect>
+                          </property>
+                          <property name="text">
+                           <string>特征筛选</string>
+                          </property>
+                         </widget>
+                         <widget class="QTabWidget" name="tabWidget_FeatureSelectionData">
+                          <property name="geometry">
+                           <rect>
+                            <x>360</x>
+                            <y>60</y>
+                            <width>541</width>
+                            <height>351</height>
+                           </rect>
+                          </property>
+                          <widget class="QWidget" name="tab">
+                           <attribute name="title">
+                            <string>Tab 1</string>
+                           </attribute>
+                          </widget>
+                          <widget class="QWidget" name="tab_6">
+                           <attribute name="title">
+                            <string>Tab 2</string>
+                           </attribute>
+                          </widget>
+                         </widget>
                         </widget>
                        </item>
                       </layout>
                      </widget>
                      <widget class="QWidget" name="page4_ModelTraining">
-                      <layout class="QVBoxLayout" name="verticalLayout_26">
+                      <widget class="QTreeWidget" name="treeWidget">
+                       <property name="geometry">
+                        <rect>
+                         <x>9</x>
+                         <y>9</y>
+                         <width>501</width>
+                         <height>131</height>
+                        </rect>
+                       </property>
+                       <column>
+                        <property name="text">
+                         <string>算法选择</string>
+                        </property>
+                       </column>
                        <item>
-                        <widget class="QFrame" name="row_5">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>150</height>
-                          </size>
+                        <property name="text">
+                         <string>回归</string>
+                        </property>
+                        <item>
+                         <property name="text">
+                          <string>线性回归 (Linear Regression)</string>
                          </property>
-                         <property name="styleSheet">
-                          <string notr="true"/>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>岭回归 (Ridge Regression)</string>
                          </property>
-                         <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>套索回归 (Lasso Regression)</string>
                          </property>
-                         <property name="frameShadow">
-                          <enum>QFrame::Raised</enum>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>弹性网络 (Elastic Net)</string>
                          </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_31">
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>决策树回归 (Decision Tree Regression)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>随机森林回归 (Random Forest Regression)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>梯度提升回归树 (Gradient Boosting Regression Trees，GBRT)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>支持向量机回归 (Support Vector Machine Regression，SVMR)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>神经网络回归 (Neural Networks Regression)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>K近邻回归 (K-Nearest Neighbors Regression，KNN)</string>
+                         </property>
+                        </item>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>分类</string>
+                        </property>
+                        <item>
+                         <property name="text">
+                          <string>逻辑回归 (Logistic Regression)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>K近邻分类 (K-Nearest Neighbors，KNN)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>支持向量机 (Support Vector Machine，SVM)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>决策树 (Decision Tree)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>随机森林 (Random Forest)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>梯度提升树 (Gradient Boosting Trees)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>朴素贝叶斯 (Naive Bayes)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>神经网络 (Neural Networks)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>AdaBoost</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>XGBoost</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>LightGBM</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>CatBoost</string>
+                         </property>
+                        </item>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>降维</string>
+                        </property>
+                        <item>
+                         <property name="text">
+                          <string>主成分分析 (Principal Component Analysis，PCA)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>线性判别分析 (Linear Discriminant Analysis，LDA)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>t-分布随机邻域嵌入 (t-Distributed Stochastic Neighbor Embedding，t-SNE)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>因子分析 (Factor Analysis)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>独立成分分析 (Independent Component Analysis，ICA)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>自动编码器 (Autoencoders)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>多维尺度缩减 (Multidimensional Scaling，MDS)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>UMAP (Uniform Manifold Approximation and Projection)</string>
+                         </property>
+                        </item>
+                       </item>
+                       <item>
+                        <property name="text">
+                         <string>聚类</string>
+                        </property>
+                        <item>
+                         <property name="text">
+                          <string>K均值聚类 (K-Means Clustering)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>层次聚类 (HierarchicalClustering)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>DBSCAN (Density-Based Spatial Clustering of Applications with Noise)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>高斯混合模型 (Gaussian Mixture Models，GMM)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>光谱聚类 (SpectralClustering)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>均值漂移聚类 (Mean Shift Clustering)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>密度峰值聚类 (Density Peak Clustering)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>自组织映射 (Self-Organizing Maps，SOM)</string>
+                         </property>
+                        </item>
+                        <item>
+                         <property name="text">
+                          <string>OPTICS (Ordering Points To ldentify the Clustering Structure)</string>
+                         </property>
+                        </item>
+                       </item>
+                      </widget>
+                      <widget class="QGroupBox" name="groupBox_4">
+                       <property name="geometry">
+                        <rect>
+                         <x>40</x>
+                         <y>180</y>
+                         <width>299</width>
+                         <height>106</height>
+                        </rect>
+                       </property>
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QGroupBox{
+    border: 2px solid rgb(17, 17, 17);
+    border-radius: 10px;
+    margin-top: 0.5em;
+	font-family: &quot;黑体&quot;;
+    font-size: 20px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 3px;
+}
+</string>
+                       </property>
+                       <property name="title">
+                        <string>交叉验证</string>
+                       </property>
+                       <layout class="QFormLayout" name="formLayout">
+                        <item row="0" column="0">
+                         <widget class="QRadioButton" name="radioButton">
+                          <property name="text">
+                           <string>留出交叉验证</string>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="1">
+                         <layout class="QHBoxLayout" name="horizontalLayout_6">
                           <item>
-                           <widget class="QMdiArea" name="mdiArea_ModelTraining">
+                           <widget class="QRadioButton" name="radioButton_3">
+                            <property name="toolTip">
+                             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;设为&lt;/span&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff0000;&quot;&gt;1&lt;/span&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;将进行留一法交叉验证，大于1将进行留P法交叉验证。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                            </property>
+                            <property name="text">
+                             <string>留1/P法交叉验证</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QSpinBox" name="spinBox_4">
                             <property name="styleSheet">
-                             <string notr="true"/>
+                             <string notr="true">QSpinBox {
+    border: none;
+    border-radius: 2px;
+    background-color: white;
+}
+</string>
+                            </property>
+                            <property name="minimum">
+                             <number>1</number>
+                            </property>
+                            <property name="value">
+                             <number>1</number>
                             </property>
                            </widget>
                           </item>
                          </layout>
-                        </widget>
-                       </item>
-                      </layout>
+                        </item>
+                        <item row="1" column="0">
+                         <widget class="QRadioButton" name="radioButton_4">
+                          <property name="text">
+                           <string>K折交叉验证</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="1">
+                         <widget class="QSpinBox" name="spinBox">
+                          <property name="styleSheet">
+                           <string notr="true">QSpinBox {
+    border: none;
+    border-radius: 2px;
+    background-color: white;
+}
+</string>
+                          </property>
+                          <property name="minimum">
+                           <number>2</number>
+                          </property>
+                          <property name="value">
+                           <number>5</number>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="0">
+                         <widget class="QRadioButton" name="radioButton_5">
+                          <property name="text">
+                           <string>分层交叉验证</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="1">
+                         <widget class="QSpinBox" name="spinBox_2">
+                          <property name="styleSheet">
+                           <string notr="true">QSpinBox {
+    border: none;
+    border-radius: 2px;
+    background-color: white;
+}
+</string>
+                          </property>
+                          <property name="minimum">
+                           <number>2</number>
+                          </property>
+                          <property name="value">
+                           <number>5</number>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                      <widget class="QGroupBox" name="groupBox_7">
+                       <property name="geometry">
+                        <rect>
+                         <x>480</x>
+                         <y>210</y>
+                         <width>331</width>
+                         <height>106</height>
+                        </rect>
+                       </property>
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QGroupBox{
+    border: 2px solid rgb(17, 17, 17);
+    border-radius: 10px;
+    margin-top: 0.5em;
+	font-family: &quot;黑体&quot;;
+    font-size: 20px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 3px;
+}
+</string>
+                       </property>
+                       <property name="title">
+                        <string>数据划分</string>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_26">
+                        <item>
+                         <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="7,10">
+                          <item>
+                           <widget class="QLabel" name="label_7">
+                            <property name="text">
+                             <string>独立测试集大小:</string>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QDoubleSpinBox" name="doubleSpinBox">
+                            <property name="font">
+                             <font>
+                              <family>Segoe UI</family>
+                              <pointsize>10</pointsize>
+                              <italic>false</italic>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QDoubleSpinBox {
+    border: none;
+    border-radius: 2px;
+    background-color: white;
+}
+</string>
+                            </property>
+                            <property name="minimum">
+                             <double>0.010000000000000</double>
+                            </property>
+                            <property name="maximum">
+                             <double>0.990000000000000</double>
+                            </property>
+                            <property name="singleStep">
+                             <double>0.010000000000000</double>
+                            </property>
+                            <property name="value">
+                             <double>0.200000000000000</double>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QGridLayout" name="gridLayout_2">
+                          <item row="0" column="0">
+                           <widget class="QCheckBox" name="checkBox_5">
+                            <property name="font">
+                             <font>
+                              <family>Segoe UI</family>
+                              <pointsize>10</pointsize>
+                              <italic>false</italic>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="toolTip">
+                             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;shuffle参数可以用来控制训练数据的顺序是否打乱。在机器学习中，打乱训练数据的顺序可以帮助模型更好地学习特征和避免出现过拟合的问题.当shuffle参数设置为True时，训练数据会被随机打乱，否则训练数据会按照原始顺序使用。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                            </property>
+                            <property name="text">
+                             <string>Shuffle</string>
+                            </property>
+                            <property name="tristate">
+                             <bool>false</bool>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="1">
+                           <widget class="QCheckBox" name="checkBox_6">
+                            <property name="font">
+                             <font>
+                              <family>Segoe UI</family>
+                              <pointsize>10</pointsize>
+                              <italic>false</italic>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="toolTip">
+                             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;random_seed是为random_state参数提供一个随机种子，为了控制每次生成的随机数相同，保证结果的可重复性。在某些情况下，我们需要多次运行相同的代码，以得到平均结果或对结果进行比较。如果不设置random_state参数，每次生成的随机数将不同，这样就无法保证结果的一致性。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                            </property>
+                            <property name="text">
+                             <string>Random_seed</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="2">
+                           <widget class="QCheckBox" name="checkBox_7">
+                            <property name="font">
+                             <font>
+                              <family>Segoe UI</family>
+                              <pointsize>10</pointsize>
+                              <italic>false</italic>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Save model</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="1" column="0">
+                           <widget class="QCheckBox" name="checkBox_8">
+                            <property name="font">
+                             <font>
+                              <family>Segoe UI</family>
+                              <pointsize>10</pointsize>
+                              <italic>false</italic>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="toolTip">
+                             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Z-score标准化(Standardization)：将数据缩放到均值为0，标准差为1的正态分布。对于每个特征，将原始值减去均值，然后除以标准差。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                            </property>
+                            <property name="text">
+                             <string>Z-score</string>
+                            </property>
+                            <property name="autoExclusive">
+                             <bool>false</bool>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="1" column="1">
+                           <widget class="QCheckBox" name="checkBox_9">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="minimumSize">
+                             <size>
+                              <width>95</width>
+                              <height>0</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Segoe UI</family>
+                              <pointsize>10</pointsize>
+                              <italic>false</italic>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="toolTip">
+                             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;justify&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;最小-最大规范化(Min-Max Scaling)：将数据缩放到[0,1]的范围内。对于每个特征，将原始值减去最小值，然后除以最大值和最小值之差。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                            </property>
+                            <property name="text">
+                             <string>MinMax</string>
+                            </property>
+                            <property name="autoExclusive">
+                             <bool>false</bool>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="1" column="2">
+                           <widget class="QCheckBox" name="checkBox_10">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="minimumSize">
+                             <size>
+                              <width>75</width>
+                              <height>0</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>Segoe UI</family>
+                              <pointsize>10</pointsize>
+                              <italic>false</italic>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="toolTip">
+                             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;MaxAbsScaler：首先计算每个特征的最大绝对值，再将每个特征除以其最大值绝对值，从而将特征缩放到[-1,1]之间。这种缩放方式保留了特征的符号信息，且不会破坏数据的稀疏性。&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                            </property>
+                            <property name="text">
+                             <string>MaxAbs</string>
+                            </property>
+                            <property name="autoExclusive">
+                             <bool>false</bool>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                       </layout>
+                      </widget>
+                      <widget class="QGroupBox" name="groupBox_5">
+                       <property name="geometry">
+                        <rect>
+                         <x>50</x>
+                         <y>330</y>
+                         <width>299</width>
+                         <height>88</height>
+                        </rect>
+                       </property>
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QGroupBox{
+    border: 2px solid rgb(17, 17, 17);
+    border-radius: 10px;
+    margin-top: 0.5em;
+	font-family: &quot;黑体&quot;;
+    font-size: 20px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 3px;
+}
+</string>
+                       </property>
+                       <property name="title">
+                        <string>预测控制</string>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_27">
+                        <item>
+                         <layout class="QHBoxLayout" name="horizontalLayout_11">
+                          <item>
+                           <widget class="QLabel" name="label_8">
+                            <property name="toolTip">
+                             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;需要注意的是，这个参数只在数据量很大时才会有效果，对于较小的数据集，使用多核反而会导致程序运行变慢。另外，有些算法本身并不支持并行计算，此时设置n_jobs也不会起到加速的作用。&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                            </property>
+                            <property name="text">
+                             <string>CV启动的CPU核心数:</string>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QSpinBox" name="spinBox_3">
+                            <property name="styleSheet">
+                             <string notr="true">QSpinBox {
+    border: none;
+    border-radius: 2px;
+    background-color: white;
+}
+</string>
+                            </property>
+                            <property name="minimum">
+                             <number>1</number>
+                            </property>
+                            <property name="value">
+                             <number>1</number>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <layout class="QHBoxLayout" name="horizontalLayout_12">
+                          <property name="spacing">
+                           <number>15</number>
+                          </property>
+                          <item>
+                           <widget class="QPushButton" name="pushButton_2">
+                            <property name="font">
+                             <font>
+                              <family>Segoe UI</family>
+                              <pointsize>10</pointsize>
+                              <italic>false</italic>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Start</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="pushButton_3">
+                            <property name="font">
+                             <font>
+                              <family>Segoe UI</family>
+                              <pointsize>10</pointsize>
+                              <italic>false</italic>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>Stop</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                       </layout>
+                      </widget>
+                      <widget class="QGroupBox" name="groupBox_6">
+                       <property name="geometry">
+                        <rect>
+                         <x>480</x>
+                         <y>330</y>
+                         <width>299</width>
+                         <height>139</height>
+                        </rect>
+                       </property>
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QGroupBox{
+    border: 2px solid rgb(17, 17, 17);
+    border-radius: 10px;
+    margin-top: 0.5em;
+	font-family: &quot;黑体&quot;;
+    font-size: 20px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 3px;
+}
+</string>
+                       </property>
+                       <property name="title">
+                        <string>预测得分</string>
+                       </property>
+                       <layout class="QGridLayout" name="gridLayout_4">
+                        <property name="leftMargin">
+                         <number>15</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>15</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>15</number>
+                        </property>
+                        <property name="horizontalSpacing">
+                         <number>10</number>
+                        </property>
+                        <item row="0" column="2">
+                         <widget class="QLabel" name="label_11">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>MAE</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="1">
+                         <widget class="QLineEdit" name="lineEdit_10">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="1">
+                         <widget class="QLineEdit" name="lineEdit_7">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="3" column="3">
+                         <widget class="QLineEdit" name="lineEdit_15">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="3">
+                         <widget class="QLineEdit" name="lineEdit_12">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="3" column="0">
+                         <widget class="QLabel" name="label_9">
+                          <property name="text">
+                           <string>Test</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="3" column="2">
+                         <widget class="QLineEdit" name="lineEdit_14">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="3">
+                         <widget class="QLineEdit" name="lineEdit_9">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="1">
+                         <widget class="QLabel" name="label_10">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>R2</string>
+                          </property>
+                          <property name="textFormat">
+                           <enum>Qt::RichText</enum>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="0">
+                         <widget class="QLabel" name="label_12">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Metric</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="2">
+                         <widget class="QLineEdit" name="lineEdit_11">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="3" column="1">
+                         <widget class="QLineEdit" name="lineEdit_13">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="2" column="0">
+                         <widget class="QLabel" name="label_13">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Validation</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="0" column="3">
+                         <widget class="QLabel" name="label_14">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>RMSE</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="2">
+                         <widget class="QLineEdit" name="lineEdit_8">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                         </widget>
+                        </item>
+                        <item row="1" column="0">
+                         <widget class="QLabel" name="label_15">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="text">
+                           <string>Training</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                      <widget class="QGroupBox" name="groupBox_3">
+                       <property name="geometry">
+                        <rect>
+                         <x>570</x>
+                         <y>20</y>
+                         <width>299</width>
+                         <height>150</height>
+                        </rect>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>150</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>16777215</width>
+                         <height>200</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QGroupBox{
+    border: 2px solid rgb(17, 17, 17);
+    border-radius: 10px;
+    margin-top: 0.5em;
+	font-family: &quot;黑体&quot;;
+    font-size: 20px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 3px;
+}
+</string>
+                       </property>
+                       <property name="title">
+                        <string>参数设置</string>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_28">
+                        <property name="spacing">
+                         <number>6</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>9</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>15</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>9</number>
+                        </property>
+                        <item>
+                         <widget class="QPlainTextEdit" name="plainTextEdit">
+                          <property name="font">
+                           <font>
+                            <family>Segoe UI</family>
+                            <pointsize>10</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPlainTextEdit {
+    border-radius: 10px;
+	border: none;
+	background-color: #ffffff;
+}
+</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
                      </widget>
                      <widget class="QWidget" name="page5_ResultAnalysis"/>
                      <widget class="QWidget" name="page6_FeatureGeneration"/>
