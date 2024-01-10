@@ -1903,7 +1903,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <enum>QFrame::NoFrame</enum>
                      </property>
                      <property name="currentIndex">
-                      <number>3</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="page1_Home">
                       <property name="styleSheet">

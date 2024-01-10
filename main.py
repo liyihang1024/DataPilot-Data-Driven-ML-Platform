@@ -14,7 +14,8 @@
 
 # 导入必要的库和模块
 import sys
-import qdarkstyle
+import bcrypt
+import json
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -34,7 +35,9 @@ from modules import *
 from widgets import *
 from PySide6.QtCharts import QChart, QLineSeries, QValueAxis
 
-# from qt_material import apply_stylesheet
+# 从转换的ui文件导入登录对话框，每次修改ui文件后都需要将其中类名修改为Ui_LoginMainWindow
+from modules.ui_login import Ui_LoginMainWindow  
+
 
 # 打印当前时间
 print("当前时间:", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
@@ -45,7 +48,6 @@ os.environ["QT_FONT_DPI"] = "96"
 # 将 widgets 设置为全局变量
 # ///////////////////////////////////////////////////////////////
 widgets = None
-
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -68,9 +70,9 @@ class MainWindow(QMainWindow):
         title = "DataPilot - Data Driven ML Platform"
         description = "DataPilot - Data Driven ML Platform"
         self.setWindowTitle(title)  # 设置窗口标题
-        widgets.titleRightInfo.setText(description)  # 设置界面右上角信息
+        widgets.titleRightInfo.setText(description)  # 设置界面左上角信息
         # 设置窗口图标
-        self.setWindowIcon(QIcon("images/DataPilot_icon.png"))
+        self.setWindowIcon(QIcon("images/images/DataPilot_icon.png"))
 
         # 切换菜单
         # ///////////////////////////////////////////////////////////////
@@ -998,8 +1000,16 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon("images/DataPilot_icon.png"))
-    window = MainWindow()
-    # window.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside6'))
-    window.show()
+    login_dialog = LoginMainWindow()
+
+    def on_login_success():
+        # 登录成功后要执行的操作
+        app.setWindowIcon(QIcon("images/images/DataPilot_icon.png"))
+        window = MainWindow()
+        window.show()
+
+    # 连接登录成功的信号到槽函数
+    login_dialog.loggedIn.connect(on_login_success)
+
+    login_dialog.show()  # 显示登录窗口
     sys.exit(app.exec())

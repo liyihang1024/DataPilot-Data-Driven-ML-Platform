@@ -48,3 +48,6 @@ from . Ui_widget_FeatureSelection import *
 
 # 从自定特义模型训练块导入其他UI窗口
 from . Ui_widget_ModelTrain import *
+
+# 导入自定义登录窗口
+from . ui_login import *

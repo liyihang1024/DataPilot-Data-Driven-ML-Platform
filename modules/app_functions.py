@@ -557,3 +557,75 @@ class NonClosableMdiSubWindow(QMdiSubWindow):
     def closeEvent(self, event):
         # 重写closeEvent，阻止窗口关闭
         event.ignore()
+
+
+# ======================== 代码块##：登录窗口 ========================
+class RegisterDialog(QDialog):
+    # 注册对话框代码
+    pass
+
+class LoginMainWindow(QMainWindow):
+    # 创建一个自定义信号，用于在登录成功时发出
+    loggedIn = Signal()
+
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_LoginMainWindow()
+        self.ui.setupUi(self)
+
+        # 隐藏登录页面窗口边框
+        self.setWindowFlag(Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
+
+        # 设置任务栏图标
+        self.setWindowIcon(QIcon("images/images/DataPilot_icon.png"))
+
+        # 设置登录按钮的事件处理
+        self.ui.btn_login.clicked.connect(self.check_credentials)
+
+        # 初始化用于窗口拖动的变量
+        self.oldPos = None
+
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPosition().toPoint()
+
+    def mouseMoveEvent(self, event):
+        if self.oldPos:
+            delta = QPoint(event.globalPosition().toPoint() - self.oldPos)
+            self.move(self.x() + delta.x(), self.y() + delta.y())
+            self.oldPos = event.globalPosition().toPoint()
+
+    def register_new_user(self):
+        register_dialog = RegisterDialog()
+        if register_dialog.exec() == QDialog.Accepted:
+            username = register_dialog.username
+            password = register_dialog.password
+            self.save_user_credentials(username, password)
+
+    def save_user_credentials(self, username, password):
+        hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+        # 保存到本地文件
+        with open("users.json", "r+") as file:
+            users = json.load(file)
+            users[username] = hashed_password.decode()
+            file.seek(0)
+            json.dump(users, file)
+
+    def check_credentials(self):
+        # 这里实现登录验证逻辑
+        username = self.ui.lineEdit_username.text()
+        password = self.ui.lineEdit_password.text()
+
+        # 从本地文件加载用户信息
+        with open("users.json", "r") as file:
+            users = json.load(file)
+
+        if username in users and bcrypt.checkpw(password.encode(), users[username].encode()):
+            self.loggedIn.emit()
+            self.close()
+        else:
+            self.ui.label_error.setText("用户名或密码错误！")
+# ======================== 代码块##：结束 ========================
+            
+
+            

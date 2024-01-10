@@ -1,10 +1,14 @@
 <RCC>
   <qresource prefix="images">
     <file>images/images/DataPilot.png</file>
-    <file>images/images/DataPilot_bg.png</file>
+    <file>images/images/DataPilot_icon.png</file>
     <file>images/images/HomePage_bg.png</file>
+    <file>images/images/login.png</file>
     <file>images/images/crystal_structure.png</file>
     <file>images/images/Tutorial.png</file>
+    <file>images/images/QQ.png</file>
+    <file>images/images/WeChat.png</file>
+    <file>images/images/QR-code.png</file>
   </qresource>
   <qresource prefix="icons">
     <file>images/icons/cil-3d.png</file>
@@ -268,9 +272,11 @@
     <file>images/icons/cil-zoom-in.png</file>
     <file>images/icons/cil-zoom-out.png</file>
     <file>images/icons/icon_close.png</file>
+    <file>images/icons/icon_close1.png</file>
     <file>images/icons/icon_maximize.png</file>
     <file>images/icons/icon_menu.png</file>
     <file>images/icons/icon_minimize.png</file>
+    <file>images/icons/icon_minimize1.png</file>
     <file>images/icons/icon_restore.png</file>
     <file>images/icons/icon_settings.png</file>
   </qresource>

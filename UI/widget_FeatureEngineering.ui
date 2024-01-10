@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MdiSubW_FeatureEngineering</class>
+ <widget class="QWidget" name="MdiSubW_FeatureEngineering">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>995</width>
+    <height>501</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>260</y>
+     <width>258</width>
+     <height>226</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_30">
+    <item>
+     <widget class="QTreeWidget" name="treeWidget_featureSelection">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <column>
+       <property name="text">
+        <string>特征选择</string>
+       </property>
+      </column>
+      <item>
+       <property name="text">
+        <string>Filter过滤法</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>方差过滤</string>
+        </property>
+        <property name="checkState">
+         <enum>Unchecked</enum>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>相关性过滤</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>卡方过滤</string>
+         </property>
+         <property name="checkState">
+          <enum>Unchecked</enum>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>F检验</string>
+         </property>
+         <property name="checkState">
+          <enum>Unchecked</enum>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>互信息法</string>
+         </property>
+         <property name="checkState">
+          <enum>Unchecked</enum>
+         </property>
+        </item>
+       </item>
+      </item>
+      <item>
+       <property name="text">
+        <string>Embedded嵌入法</string>
+       </property>
+       <property name="checkState">
+        <enum>Unchecked</enum>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Wrapper包装法</string>
+       </property>
+       <property name="checkState">
+        <enum>Unchecked</enum>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_8">
+      <item>
+       <widget class="QPushButton" name="btn_featureSelection">
+        <property name="text">
+         <string>特征筛选</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_correlationAnalysis">
+        <property name="text">
+         <string>相关性分析</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_importanceRanking">
+        <property name="text">
+         <string>重要性排序</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QFrame" name="frame_div_content_1">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>70</y>
+     <width>930</width>
+     <height>110</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>110</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>110</height>
+    </size>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_17">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame_content_wid_1">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_9">
+       <item>
+        <layout class="QGridLayout" name="gridLayout">
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="lineedit_imported_filename">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="placeholderText">
+            <string>Type here</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="btn_open_local_file">
+           <property name="minimumSize">
+            <size>
+             <width>150</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Segoe UI</family>
+             <pointsize>10</pointsize>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>Open</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resources.qrc">
+             <normaloff>:/icons/images/icons/cil-folder-open.png</normaloff>:/icons/images/icons/cil-folder-open.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="btn_FeatureProcessing_2">
+           <property name="minimumSize">
+            <size>
+             <width>150</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Segoe UI</family>
+             <pointsize>10</pointsize>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string>FeatureProcessing</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resources.qrc">
+             <normaloff>:/icons/images/icons/cil-data-process.png</normaloff>:/icons/images/icons/cil-data-process.png</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame_title_wid_1">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <widget class="QLabel" name="label_missing_values_handling">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>缺失值处理：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="combobox_missing_values_handling">
+         <item>
+          <property name="text">
+           <string>平均值填充</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>中位数填充</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>众数填充</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>固定值填充</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>最近邻填充</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>删除整行</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>删除整列</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>不处理</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_outlier_handling">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>异常值处理：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="combobox_outlier_handling">
+         <item>
+          <property name="text">
+           <string>平均值填充</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>中位数填充</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>众数填充</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>删除整行</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>删除整列</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>不处理</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_categorical_handling">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>离散值处理：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="combobox_categorical_handling">
+         <item>
+          <property name="text">
+           <string>标签编码（Label Encoding）</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>独热编码（One-Hot Encoding）</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>二进制编码（Binary Encoding）</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>离散哈希（Feature Hashing）</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>嵌入方法（Embeddings）</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>目标编码（Target Encoding）</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>不处理</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_data_normalization_handling">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>数据归一化：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="combobox_data_normalization_handling">
+         <item>
+          <property name="text">
+           <string>最小最大归一化</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>均值归一化</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>标准化</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>最大绝对值归一化</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>鲁棒归一化</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>不处理</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
